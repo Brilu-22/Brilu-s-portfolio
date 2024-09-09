@@ -209,7 +209,7 @@ body:not(.user-is-tabbing) a:focus {
   color: inherit;
   border: 1px solid var(--pink);
   font-weight: 400;
-  border-radius: 30px;
+  border-radius: 10px;
 }
 
 .btn:focus {
@@ -223,7 +223,7 @@ body:not(.user-is-tabbing) a:focus {
   top: 0;
   left: 0;
   right: 100%;
-  background: var(--white);
+  background: #f74360;
   height: 100%;
   z-index: -1;
   transition: all 0.2s cubic-bezier(1, 0.68, 0.16, 0.9);
@@ -238,6 +238,7 @@ body:not(.user-is-tabbing) a:focus {
 .btn--pink {
   background: #f74361a1;
   transition: all 0.2s;
+  color: #f74360;
 }
 
 .btn--pink::after {
@@ -265,7 +266,7 @@ body:not(.user-is-tabbing) a:focus {
   top: 0;
   left: 0;
   right: 100%;
-  background: var(--white);
+  background: #f74360;
   height: 100%;
   z-index: -1;
   transition: all 0.2s cubic-bezier(1, 0.68, 0.16, 0.9);
@@ -333,6 +334,7 @@ body:not(.user-is-tabbing) a:focus {
 .nav__items {
   display: flex;
   list-style: none;
+  color: #f88c31;
 }
 
 .nav__item:not(:last-child) {
@@ -377,7 +379,8 @@ body:not(.user-is-tabbing) a:focus {
   right: 100%;
   display: inline-block;
   height: 1rem;
-  background: var(--white);
+  background: #f88c31;
+  color: #f88c31;
   transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.9);
 }
 
@@ -396,8 +399,7 @@ body:not(.user-is-tabbing) a:focus {
 /* --------------------------------------- */
 
 .header {
-  background: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.4)),
-    url("./images/header3.svg");
+  background: url("./images/header3.svg");
   height: 100vh;
   background-size: cover;
   background-position: center;
