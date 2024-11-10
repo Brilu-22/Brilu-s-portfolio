@@ -138,7 +138,7 @@ h2::after {
   display: block;
   height: 2px;
   width: 10rem;
-  background: var(--pink);
+  background: #008d10;
   margin: var(--gutter-small) 0;
 }
 
@@ -266,7 +266,7 @@ body:not(.user-is-tabbing) a:focus {
   top: 0;
   left: 0;
   right: 100%;
-  background: #f74360;
+  background: #008d10;
   height: 100%;
   z-index: -1;
   transition: all 0.2s cubic-bezier(1, 0.68, 0.16, 0.9);
@@ -279,7 +279,7 @@ body:not(.user-is-tabbing) a:focus {
 .link__text:hover::after,
 .link__text:focus:after {
   right: 0;
-  background: var(--pink);
+  background: #0b9419;
 }
 
 .link__text span {
@@ -298,7 +298,7 @@ body:not(.user-is-tabbing) a:focus {
   align-items: center;
   height: 5.5rem;
   width: 5.5rem;
-  background-color: var(--pink);
+  background-color: #086912;
   border-radius: 50%;
   z-index: 10;
   visibility: hidden;
@@ -334,7 +334,7 @@ body:not(.user-is-tabbing) a:focus {
 .nav__items {
   display: flex;
   list-style: none;
-  color: #f88c31;
+  color: #008d10;
 }
 
 .nav__item:not(:last-child) {
@@ -379,19 +379,19 @@ body:not(.user-is-tabbing) a:focus {
   right: 100%;
   display: inline-block;
   height: 1rem;
-  background: #f88c31;
-  color: #f88c31;
+  background: #0b9419;
+  color: #0b9419;
   transition: all 0.25s cubic-bezier(1, 0.68, 0.16, 0.9);
 }
 
 .nav__link:hover {
-  color: var(--pink);
+  color: #086912;
 }
 
 .nav__link:hover::after {
   right: 0;
   height: 2px;
-  background: var(--pink);
+  background: #086912;
 }
 
 /* --------------------------------------- */
