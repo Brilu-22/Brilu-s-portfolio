@@ -23,7 +23,7 @@
   --line-height-small: 1.2;
 
   --black: #000;
-  --pink: #ff3258;
+  --pink: #086912;
   --white: #f0e9f2;
   --white-1: #e5e5e6da;
 
@@ -223,9 +223,10 @@ body:not(.user-is-tabbing) a:focus {
   top: 0;
   left: 0;
   right: 100%;
-  background: #f74360;
+  background: #008d10;
   height: 100%;
   z-index: -1;
+  border-radius: 10px;
   transition: all 0.2s cubic-bezier(1, 0.68, 0.16, 0.9);
 }
 
@@ -233,12 +234,13 @@ body:not(.user-is-tabbing) a:focus {
 .btn:focus::after {
   right: 0;
   background: var(--pink);
+  border-radius: 10px;
 }
 
 .btn--pink {
-  background: #f74361a1;
+  background: #008d10;
   transition: all 0.2s;
-  color: #f74360;
+  color: #086912;
 }
 
 .btn--pink::after {
@@ -454,6 +456,14 @@ body:not(.user-is-tabbing) a:focus {
   .work__box:not(:last-child) {
     margin-bottom: 20rem;
   }
+}
+
+.visit-site-button {
+  margin-bottom: 20px; /* Adjust this value to increase spacing */
+}
+
+h3.khanyisa-title {
+  margin-top: 20px; /* Adjust this value as needed */
 }
 
 .work__links {
