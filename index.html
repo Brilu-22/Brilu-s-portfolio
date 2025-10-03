@@ -5,70 +5,48 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="./images/logs.svg" />
 
-    <title>
-      Brilu Hlongwane | A Web Developer and designer based in Pretoria .
-    </title>
+    <title>Brilu Hlongwane | Designer. Developer.</title>
 
-    <meta name="description" content="Brilu the coder." />
+    <meta name="description" content="Brilu Hlongwane's creative portfolio showcasing web design and development projects." />
+    <meta name="keywords" content="Brilu Hlongwane, web designer, web developer, portfolio, frontend, backend, UI/UX" />
 
-    <meta
-      name="keywords"
-      content="Put your name, skills and some coding keywords"
-    />
     <link rel="stylesheet" href="main.css" />
   </head>
 
   <body>
-    <!-- ***** Header ***** -->
-
+    <!-- ***** Header - Matching Image 1 ***** -->
     <header class="header" role="banner" id="top">
-      <div class="row">
-        <nav class="nav" role="navigation">
-          <ul class="nav__items">
-            <li class="nav__item">
-              <a href="#work" class="nav__link">Work</a>
-            </li>
-            <li class="nav__item">
-              <a href="#clients" class="nav__link">Clients</a>
-            </li>
-            <li class="nav__item">
-              <a href="#about" class="nav__link">About</a>
-            </li>
-            <li class="nav__item">
-              <a href="#contact" class="nav__link">Contact</a>
-            </li>
-          </ul>
-        </nav>
+      <div class="header__content">
+        <h1 class="heading-primary">
+          <span class="blurry-text">Br</span><span class="sharp-text">ilu</span>
+        </h1>
+        <p class="header__description">Designer. Developer</p>
       </div>
-      <div class="header__text-box row">
-        <div class="header__text">
-          <h1 class="heading-primary">
-            <!--<span>Brilu H.</span>-->
-          </h1>
-          <!-- Put a small paragraph about yourself 
-         <p>A Web Developer and Designer based in Pretoria .</p> -->
 
-          <!--<a href="#contact" class="btn btn--pink">Get in touch</a>-->
-        </div>
-      </div>
+      <!-- Navigation for the main page -->
+      <nav class="main-nav" role="navigation">
+        <ul class="main-nav__items">
+          <li class="main-nav__item"><a href="#work" class="main-nav__link">Work</a></li>
+          <li class="main-nav__item"><a href="#clients" class="main-nav__link">Clients</a></li>
+          <li class="main-nav__item"><a href="#about" class="main-nav__link">About</a></li>
+          <li class="main-nav__item"><a href="#contact" class="main-nav__link">Contact</a></li>
+        </ul>
+      </nav>
     </header>
 
     <main role="main">
-      <!-- ***** Work ***** -->
-
+      <!-- ***** Work Section ***** -->
       <section class="work" id="work">
         <div class="row">
           <h2>My Work</h2>
           <div class="work__boxes">
-            <!-- Each div with the work__box class is a project. -->
-
+            <!-- Project 1: NBA Website -->
             <div class="work__box">
               <div class="work__text">
                 <h3>NBA Website</h3>
                 <p>
-                  This is a website I had to build for a school project for the
-                  NBA using their local API , this is just a redesign of the NBA
-                  website.
+                  This is a website I had to build for a school project for the NBA using their local API.
+                  It's a redesign of the official NBA website, focusing on modern aesthetics and user experience.
                 </p>
                 <ul class="work__list">
                   <li>React</li>
@@ -76,286 +54,209 @@
                   <li>Node</li>
                   <li>NBA API</li>
                 </ul>
-
                 <div class="work__links">
                   <a href="#" class="link__text">
                     Visit Site <span>&rarr;</span>
                   </a>
-                  <a href="https://github.com/Brilu-22/newapp.git">
-                    <img
-                      src="./images/github.svg"
-                      class="work__code"
-                      title="View Source Code"
-                      alt="GitHub"
-                    />
+                  <a href="https://github.com/Brilu-22/newapp.git" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub" />
                   </a>
                 </div>
               </div>
               <div class="work__image-box">
-                <img
-                  src="./images/NBA.png"
-                  class="work__image"
-                  alt="Project 1"
-                />
+                <img src="./images/NBA.png" class="work__image" alt="NBA Website Project" />
               </div>
             </div>
 
+            <!-- Project 2: EQ - The best electronics made for you -->
             <div class="work__box">
               <div class="work__text">
                 <h3>EQ : The best electronics made for you</h3>
                 <p>
-                  EQ is a website we developed as part of a group project. It’s
-                  designed to showcase premium headsets that deliver an
-                  unparalleled listening experience for music enthusiasts.
+                  EQ is an e-commerce website we developed as part of a group project, showcasing premium
+                  headsets designed for an unparalleled listening experience for music enthusiasts.
                 </p>
                 <ul class="work__list">
-                  <h3>Frontend:</h3>
                   <li>React</li>
                   <li>CSS3</li>
                   <li>ReactBootstrap</li>
                   <li>ReactRouter</li>
-
-                  <h3>Backend:</h3>
                   <li>NodeJS</li>
                   <li>MongoDB</li>
                   <li>Mongoose</li>
                   <li>Express</li>
                 </ul>
-
                 <div class="work__links">
                   <a href="#" class="link__text">
                     Visit Site <span>&rarr;</span>
                   </a>
-                  <a
-                    href="https://github.com/KurtSchwimmbacher/DV200T2GroupAssignment.git"
-                  >
-                    <img
-                      src="./images/github.svg"
-                      class="work__code"
-                      title="View Source Code"
-                      alt="GitHub"
-                    />
+                  <a href="https://github.com/KurtSchwimmbacher/DV200T2GroupAssignment.git" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub" />
                   </a>
                 </div>
               </div>
               <div class="work__image-box">
-                <img
-                  src="./images/EQ.jpg"
-                  class="work__image"
-                  alt="Project 1"
-                />
+                <img src="./images/EQ.jpg" class="work__image" alt="EQ Electronics Project" />
               </div>
             </div>
 
+            <!-- Project 3: Selah -->
             <div class="work__box">
               <div class="work__text">
                 <h3>Selah</h3>
                 <p>
-                  This is an interactive Questions and Answer website , where
-                  users can ask questions and other users may answer them, users
-                  are also able to sign in and login and their credentials get
-                  stored in the database using MySql.
+                  Selah is an interactive Questions and Answer website where users can post questions and
+                  provide answers. It features user authentication with sign-up and login, storing credentials
+                  in a MySQL database.
                 </p>
                 <ul class="work__list">
-                  <h3>Frontend:</h3>
                   <li>HTML</li>
                   <li>CSS</li>
                   <li>SCSS</li>
                   <li>GSAP</li>
                   <li>JavaScript</li>
-
-                  <h3>Backend:</h3>
                   <li>MySql</li>
                   <li>Php</li>
                 </ul>
-
                 <div class="work__links">
                   <a href="#" class="link__text">
                     Visit Site <span>&rarr;</span>
                   </a>
-                  <a href="https://github.com/Brilu-22/Php_Project.git">
-                    <img
-                      src="./images/github.svg"
-                      class="work__code"
-                      title="View Source Code"
-                      alt="GitHub"
-                    />
+                  <a href="https://github.com/Brilu-22/Php_Project.git" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub" />
                   </a>
                 </div>
               </div>
               <div class="work__image-box">
-                <img
-                  src="./Images/Selah.png"
-                  class="work__image"
-                  alt="Project 3"
-                />
+                <img src="./Images/Selah.png" class="work__image" alt="Selah Q&A Project" />
               </div>
             </div>
-          </div>
 
-          <div class="work__box">
-            <div class="work__text">
-              <h3>Khanyisa.</h3>
-              <p>
-                Khanyisa is a web application created for the City of Tshwane's
-                Department to simplify electricity token purchases and
-                management. Users can buy electricity, enter their meter box
-                number, and receive tokens either manually or automatically.
-                Designed for convenience, the app streamlines token purchases,
-                ensures transparency, and provides easy access to customer
-                support via live chat or chatbot.
-              </p>
-              <ul class="work__list">
-                <h3>Frontend:</h3>
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>JavaScript</li>
-
-                <h3>Frontend:</h3>
-                <li>PHP</li>
-                <li>MySQL</li>
-                <li>AWS EC2</li>
-                <li>Cloud SQL</li>
-              </ul>
-
-              <div class="work__links">
-                <a href="#" class="link__text">
-                  Visit Site <span>&rarr;</span>
-                </a>
-                <a href="https://github.com/Brilu-22/City.git">
-                  <img
-                    src="./images/github.svg"
-                    class="work__code"
-                    title="View Source Code"
-                    alt="GitHub"
-                  />
-                </a>
+            <!-- Project 4: Khanyisa -->
+            <div class="work__box">
+              <div class="work__text">
+                <h3>Khanyisa</h3>
+                <p>
+                  Khanyisa is a web application created for the City of Tshwane's Department to simplify
+                  electricity token purchases and management. Users can buy electricity, enter their meter box number,
+                  and receive tokens either manually or automatically. It also features live chat/chatbot support.
+                </p>
+                <ul class="work__list">
+                  <li>HTML</li>
+                  <li>CSS</li>
+                  <li>JavaScript</li>
+                  <li>PHP</li>
+                  <li>MySQL</li>
+                  <li>AWS EC2</li>
+                  <li>Cloud SQL</li>
+                </ul>
+                <div class="work__links">
+                  <a href="#" class="link__text">
+                    Visit Site <span>&rarr;</span>
+                  </a>
+                  <a href="https://github.com/Brilu-22/City.git" target="_blank" rel="noopener noreferrer">
+                    <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub" />
+                  </a>
+                </div>
               </div>
-            </div>
-            <div class="work__image-box">
-              <img
-                src="./images/Khanyisa.png"
-                class="work__image"
-                alt="Project 1"
-              />
+              <div class="work__image-box">
+                <img src="./images/Khanyisa.png" class="work__image" alt="Khanyisa City of Tshwane Project" />
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ***** Clients ***** -->
-
+      <!-- ***** Clients Section ***** -->
       <section class="client" id="clients">
         <div class="row">
           <h2>Clients</h2>
           <div class="client__logos">
-            <img
-              src="./images/Dips Robotics Logo.png"
-              class="client__logo"
-              alt="Company 1"
-            />
-            <h3>Dips Robotics</h3>
-            <img
-              src="./images/loretologo.png"
-              class="client__logo"
-              alt="Company 1"
-            />
-            <h3>Loreto Convent</h3>
+            <div class="client__item">
+              <img src="./images/Dips Robotics Logo.png" class="client__logo" alt="Dips Robotics Logo" />
+              <h3>Dips Robotics</h3>
+            </div>
+            <div class="client__item">
+              <img src="./images/loretologo.png" class="client__logo" alt="Loreto Convent Logo" />
+              <h3>Loreto Convent</h3>
+            </div>
           </div>
         </div>
       </section>
 
-      <!-- ***** About ***** -->
-
+      <!-- ***** About Section - Matching Image 3 (Browser Frame) ***** -->
       <section class="about" id="about">
         <div class="row">
-          <h2>About Me</h2>
-          <div class="about__content">
-            <div class="about__text">
+          <h2 class="sr-only">About Me</h2>
+          <div class="browser-frame">
+            <div class="browser-controls">
+              <span class="control red"></span>
+              <span class="control yellow"></span>
+              <span class="control green"></span>
+              <div class="browser-tab">b</div>
+            </div>
+            <div class="browser-content">
               <p>
-                Hey 😊 My name is Brilu and I'm a passionate creative who also
-                has a skill in web design and development , yes I'm still a
-                student but I can do more than most when it comes to creating an
-                interface that is both pleasing to the eye but also worth the
-                experience. I'm studying both front-end and backend but I would
-                say my strongest side would be my design side.
+                Hey My name is Brilu and I'm a passionate creative who also
+                has a skill in web design and development. I can do more than most
+                when it comes to creating an interface that is both pleasing to the
+                eye and provides a great user experience. I'm well versed in both
+                front-end and back-end technologies, but I would say my strongest
+                side would be my design capabilities. I'm always eager to learn and
+                implement new design principles and development practices to create
+                visually appealing and highly functional web solutions.
               </p>
-
-              <a href="#" class="btn">My Resume</a>
+              <a href="#" class="btn btn--resume">My Resume</a>
             </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="about__photo-container">
-              <img class="about__photo" src="./images/me.svg" alt="" />
-            </div>
+      <!-- ***** Contact Section ***** -->
+      <section class="contact" id="contact">
+        <div class="row">
+          <h2>Get in Touch</h2>
+          <div class="contact__info">
+            <p>
+              If you would like to get in touch with me, drop a "Hey B 👋 Let's
+              create magic!" through my email. Let's take a chance and I'll help you
+              create a website that truly reflects who you are and what you bring
+              to this precious world. Hoping to hear from you soon.
+            </p>
+            <a href="mailto:zech01hlongwane@gmail.com" class="btn">zech01hlongwane@gmail.com</a>
           </div>
         </div>
       </section>
     </main>
 
-    <!-- ***** Contact ***** -->
-
-    <section class="contact" id="contact">
-      <div class="row">
-        <h2>Get in Touch</h2>
-        <div class="contact__info">
-          <p>
-            If you would like to get in touch with me drop a "Hey B 👋 Let's
-            create magic " through my email and let's take it from there. Take a
-            chance and I'll help you create a website that truly reflects who
-            you and are and what you bring to this precious world. Hoping to
-            hear from you soon .
-          </p>
-
-          <a href="zech01hlongwane@gmail.com" class="btn"
-            >zech01hlongwane@gmail.com</a
-          >
-        </div>
-      </div>
-    </section>
-
     <!-- ***** Footer ***** -->
-
     <footer role="contentinfo" class="footer">
       <div class="row">
         <ul class="footer__social-links">
           <li class="footer__social-link-item">
-            <a>
-              <img
-                src="./images/github.svg"
-                class="footer__social-image"
-                alt="Github"
-              />
+            <a href="https://github.com/Brilu-22" target="_blank" rel="noopener noreferrer">
+              <img src="./images/github.svg" class="footer__social-image" alt="Github" />
             </a>
           </li>
           <li class="footer__social-link-item">
-            <a
-              href="https://codepen.io/nisar_hassan"
-              title="Link to Codepen Profile"
-            >
-              <img
-                src="./images/codepen.svg"
-                class="footer__social-image"
-                alt="Codepen"
-              />
+            <a href="https://codepen.io/nisar_hassan" title="Link to Codepen Profile" target="_blank" rel="noopener noreferrer">
+              <img src="./images/codepen.svg" class="footer__social-image" alt="Codepen" />
             </a>
           </li>
           <li class="footer__social-link-item">
-            <a href="www.linkedin.com/in/brilu-bokaba-623b54208">
-              <img
-                src="./images/linkedin.svg"
-                title="Link to Linkedin Profile"
-                class="footer__social-image"
-                alt="Linkedin"
-              />
+            <a href="https://www.linkedin.com/in/brilu-bokaba-623b54208" target="_blank" rel="noopener noreferrer">
+              <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin" />
             </a>
           </li>
         </ul>
 
         <p>
           &copy; 2024 - Developer and Designer
-          <a href="" class="link">Brilu</a>
+          <a href="#top" class="link">Brilu</a>
         </p>
         <div class="footer__github-buttons">
+          <!-- This iframe is for a GitHub star button, often included in templates.
+               You might want to remove or customize if it doesn't apply directly to your repo. -->
           <iframe
             src="https://ghbtns.com/github-btn.html?user=nisarhassan12&repo=portfolio-template&type=watch&count=true"
             frameborder="0"
@@ -370,11 +271,7 @@
     </footer>
 
     <a href="#top" class="back-to-top" title="Back to Top">
-      <img
-        src="./images/arrow-up.svg"
-        alt="Back to Top"
-        class="back-to-top__image"
-      />
+      <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image" />
     </a>
     <script src="./main.js"></script>
   </body>
