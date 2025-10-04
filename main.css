@@ -442,6 +442,353 @@ a:focus {
   }
 }
 
+/* --------------------------------------- /
+/ ----- About Section - Profile Image (Updated) ----- /
+/ --------------------------------------- */
+
+.browser-content {
+  padding: var(--gutter-medium);
+  min-height: 300px;
+  display: flex; /* Use flexbox for content arrangement */
+  justify-content: center;
+  align-items: center; /* Center content vertically */
+  font-size: var(--font-size-normal);
+  color: var(--dark-gray);
+  line-height: var(--line-height-normal);
+}
+
+.about-me-content-wrapper {
+  display: flex;
+  flex-direction: row; /* Default: image and text side-by-side */
+  gap: var(--gutter-medium);
+  align-items: center; /* Align items vertically in the middle */
+  max-width: 800px; /* Limit wrapper width for better readability */
+  width: 100%;
+}
+
+.about-me__image-box {
+  flex-shrink: 0; /* Prevent image from shrinking */
+  width: 250px; /* Set a specific width for the image container */
+  height: 250px; /* Make it a square for circular crop */
+  border-radius: 50%; /* Make the image circular */
+  overflow: hidden; /* Hide parts of the image outside the circle */
+  box-shadow: var(--shadow-light); /* Optional: subtle shadow for depth */
+  background-color: var(--light-gray); /* Placeholder background */
+}
+
+.about-me__profile-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Crop and cover the circular container */
+  display: block;
+}
+
+.about-me__text-content {
+  flex-grow: 1; /* Allow text content to take up remaining space */
+  text-align: left;
+}
+
+.browser-content p {
+  margin: 0 0 var(--gutter-normal) 0; /* Add bottom margin to paragraph */
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .about-me-content-wrapper {
+    flex-direction: column; /* Stack image and text vertically on smaller screens */
+    text-align: center;
+    gap: var(--gutter-normal);
+  }
+
+  .about-me__image-box {
+    width: 200px; /* Slightly smaller image on smaller screens */
+    height: 200px;
+  }
+
+  .about-me__text-content {
+    text-align: center;
+  }
+}
+
+@media (max-width: 600px) {
+  .about-me__image-box {
+    width: 150px; /* Even smaller image on mobile */
+    height: 150px;
+  }
+  .browser-content {
+    padding: var(--gutter-normal);
+  }
+}
+
+/* --------------------------------------- /
+/ ----- Skills Section (Updated) ----- /
+/ --------------------------------------- */
+
+.skills {
+  background-color: rgb(228, 228, 228); /* Changed to white background */
+  padding: var(--gutter-huge) 0;
+  text-align: center;
+}
+
+.skills h2 {
+  margin-bottom: var(--gutter-huge);
+}
+
+.skills__container {
+  display: flex;
+  justify-content: center;
+  gap: var(--gutter-medium);
+  margin-bottom: var(--gutter-huge);
+  flex-wrap: wrap;
+  border-radius: 1px solid black;
+  max-width: var(--container-normal-width);
+}
+
+.skills__category {
+  flex: 1;
+  min-width: 280px;
+  background-color: var(--white);
+  /* Removed box-shadow to match the original image's flat style for the skill boxes */
+  border-radius: var(--border-radius-soft);
+  padding: var(--gutter-normal);
+  text-align: left;
+}
+
+.skills__category h3 {
+  color: var(--black);
+  margin-bottom: var(--gutter-small);
+  text-align: left; /* Aligned left as in the design */
+  padding-left: 0.5rem; /* Small padding to align with list items */
+}
+
+.skills__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills__list li {
+  background-color: transparent; /* No background for list items */
+  color: var(--dark-gray);
+  padding: 0.8rem 0; /* Adjust padding */
+  margin-bottom: var(--gutter-xsmall);
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: var(--gutter-small); /* Increased gap for icon and text */
+}
+
+.skills__list li::before {
+  content: "";
+  display: inline-flex; /* Use inline-flex for centering content */
+  justify-content: center;
+  align-items: center;
+  width: 2.2rem; /* Size of the yellow circle */
+  height: 2.2rem; /* Size of the yellow circle */
+  border-radius: 50%; /* Make it a circle */
+  background-color: var(--yellow); /* Yellow circle */
+  flex-shrink: 0; /* Prevent it from shrinking */
+  margin-right: var(--gutter-xsmall); /* Space between circle and text */
+}
+
+.skills__list li::after { /* Add the white tick */
+  content: "✓"; /* White tick */
+  color: var(--white);
+  font-size: 1.4rem; /* Size of the tick */
+  position: absolute; /* Position the tick inside the circle */
+  left: calc(0.5rem + (2.2rem / 2) - (1.4rem / 2)); /* Adjust left to center horizontally, relative to li padding */
+  transform: translateY(-50%); /* Center vertically relative to li */
+  top: 50%;
+  pointer-events: none; /* Ensure text is still selectable */
+}
+
+/* Specific adjustment for tick positioning when inside the ::before psuedo-element */
+/* This approach might be cleaner to combine ::before for circle and tick */
+/* Let's re-do the list item styling for precise control */
+.skills__list li {
+  position: relative; /* Needed for absolute positioning of the tick */
+  background-color: transparent;
+  color: var(--dark-gray);
+  padding: 0.8rem 0;
+  margin-bottom: var(--gutter-xsmall);
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  padding-left: 3rem; /* Space for the yellow circle */
+}
+
+.skills__list li::before {
+  content: "";
+  position: absolute;
+  left: 0; /* Position at the start of the padding-left */
+  top: 50%;
+  transform: translateY(-50%);
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  background-color: var(--yellow);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.skills__list li::after {
+  content: "✓";
+  position: absolute;
+  left: 0; /* Also positioned at the start */
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--white);
+  font-size: 1.4rem;
+  width: 2.2rem; /* Match width of circle */
+  height: 2.2rem; /* Match height of circle */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  pointer-events: none;
+}
+
+
+.general-qualities {
+  max-width: var(--container-normal-width);
+  margin: var(--gutter-huge) auto 0; /* Added top margin for separation */
+  background-color: var(--white);
+  /* Removed box-shadow */
+  border-radius: var(--border-radius-soft);
+  padding: var(--gutter-normal);
+  text-align: left;
+}
+
+.general-qualities h3 {
+  color: var(--black);
+  margin-bottom: var(--gutter-small);
+  text-align: left; /* Aligned left */
+  padding-left: 0.5rem;
+}
+
+.qualities__list li {
+  background-color: transparent; /* No background for list items */
+  color: var(--dark-gray);
+  padding: 0.8rem 0;
+  margin-bottom: var(--gutter-xsmall);
+  font-size: var(--font-size-small);
+  font-weight: 400;
+  display: flex;
+  align-items: center;
+  gap: var(--gutter-small);
+  padding-left: 3rem; /* Space for the icon */
+  position: relative;
+}
+
+.qualities__list li::before {
+  content: "💡"; /* Retained lightbulb, centered in a space */
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.8rem; /* Size of the lightbulb */
+  color: var(--yellow);
+  width: 2.2rem; /* Ensure consistent spacing */
+  height: 2.2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+}
+
+@media (max-width: 768px) {
+  .skills__container {
+    flex-direction: column;
+    align-items: center;
+  }
+  .skills__category {
+    width: 100%;
+    max-width: 400px;
+  }
+  .general-qualities {
+    width: 100%;
+  }
+  .skills__list li,
+  .qualities__list li {
+    padding-left: 2rem; /* Adjust padding for smaller screens if needed */
+  }
+  .skills__list li::before,
+  .skills__list li::after,
+  .qualities__list li::before {
+    left: -0.5rem; /* Adjust positioning for smaller screens */
+  }
+}
+
+
+/* --------------------------------------- /
+/ ----- Design Start Section (Updated) ----- /
+/ --------------------------------------- */
+
+.design-start {
+  background-color: var(--white);
+  padding: var(--gutter-huge) 0;
+  text-align: center;
+}
+
+.design-start h2 {
+  margin-bottom: var(--gutter-huge);
+}
+
+.design-start__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Slightly smaller min-width for more flexibility */
+  gap: var(--gutter-medium);
+  justify-content: center;
+  max-width: var(--container-max-width); /* Constrain width */
+  margin: 0 auto;
+  padding: 0 var(--gutter-normal); /* Add padding for consistency */
+}
+
+.design-card {
+  background-color: var(--white);
+  border-radius: 20px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  /* Removed align-items: center; as there's no text/buttons */
+  /* Removed padding-bottom */
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.design-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.design-card__image-container { /* Renamed from _image-placeholder for clarity */
+  width: 100%;
+  height: 100%; /* Take full height of the card */
+  /* Removed fixed height for more flexibility if images vary */
+  background-color: var(--light-gray); /* Fallback */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Removed margin-bottom */
+  overflow: hidden;
+}
+
+.design-card__image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Ensure images cover the container */
+  display: block; /* Remove extra space below image */
+}
+
+/* Remove styling for elements that are no longer present */
+.design-card h3,
+.design-card p,
+.design-card .btn {
+  display: none; /* Hide them if they are still in HTML, or simply remove them from HTML */
+}
+
 
 /* --------------------------------------- */
 /* ----- Work Section ----- */
@@ -593,6 +940,32 @@ a:focus {
 /* --------------------------------------- */
 /* ----- About Section - Matching Image 3 (Browser Frame) ----- */
 /* --------------------------------------- */
+
+.browser-frame {
+  position: relative; /* This is crucial for positioning the sticker absolutely within the frame */
+  /* ... existing styles for browser-frame ... */
+}
+
+.browser-sticker {
+  position: absolute;
+  top: -20px; /* Adjust this value to move the sticker up/down */
+  right: -20px; /* Adjust this value to move the sticker left/right */
+  width: 100px; /* Adjust sticker size as needed */
+  height: auto;
+  z-index: 5; /* Ensure the sticker is on top of other elements in the frame */
+  transform: rotate(10deg); /* Add a slight rotation for a more "placed" look */
+  filter: drop-shadow(2px 2px 5px rgba(0, 0, 0, 0.2)); /* Optional: Add a subtle shadow for depth */
+}
+
+@media (max-width: 600px) {
+  .browser-sticker {
+    width: 70px; /* Smaller sticker on smaller screens */
+    top: -10px;
+    right: -10px;
+    transform: rotate(7deg);
+  }
+}
+
 
 .about {
   background-color: var(--white); /* Match the image background */

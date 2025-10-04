@@ -4,15 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="shortcut icon" type="image/png" href="./images/logs.svg" />
-
     <title>Brilu Hlongwane | Designer. Developer.</title>
-
     <meta name="description" content="Brilu Hlongwane's creative portfolio showcasing web design and development projects." />
     <meta name="keywords" content="Brilu Hlongwane, web designer, web developer, portfolio, frontend, backend, UI/UX" />
-
     <link rel="stylesheet" href="main.css" />
   </head>
-
   <body>
     <!-- ***** Header - Matching Image 1 ***** -->
     <header class="header" role="banner" id="top">
@@ -26,7 +22,9 @@
       <!-- Navigation for the main page -->
       <nav class="main-nav" role="navigation">
         <ul class="main-nav__items">
+          <li class="main-nav__item"><a href="#skills" class="main-nav__link">Skills</a></li>
           <li class="main-nav__item"><a href="#work" class="main-nav__link">Work</a></li>
+          <li class="main-nav__item"><a href="#design-start" class="main-nav__link">Design</a></li>
           <li class="main-nav__item"><a href="#clients" class="main-nav__link">Clients</a></li>
           <li class="main-nav__item"><a href="#about" class="main-nav__link">About</a></li>
           <li class="main-nav__item"><a href="#contact" class="main-nav__link">Contact</a></li>
@@ -35,6 +33,46 @@
     </header>
 
     <main role="main">
+      <!-- ***** Skills Section (New) ***** -->
+      <section class="skills" id="skills">
+        <div class="row">
+          <h2>My Skills</h2>
+          <div class="skills__container">
+            <div class="skills__category">
+              <h3>Tech Skills</h3>
+              <ul class="skills__list">
+                <li>HTML</li>
+                <li>CSS</li>
+                <li>React</li>
+                <li>React Native</li>
+                <li>JavaScript</li>
+                <li>PHP</li>
+                <li>Python</li>
+                <li>SCSS</li>
+              </ul>
+            </div>
+            <div class="skills__category">
+              <h3>Design Skills</h3>
+              <ul class="skills__list">
+                <li>Adobe Illustrator</li>
+                <li>Figma</li>
+                <li>Squarespace</li>
+                <li>Adobe Photoshop</li>
+              </ul>
+            </div>
+          </div>
+          <div class="general-qualities">
+            <h3>General Qualities</h3>
+            <ul class="qualities__list">
+              <li>People's person</li>
+              <li>Great customer skills - worked at the school information centre and the library</li>
+              <li>Participated in the school's open days as a school guide for future students and parents</li>
+              <li>Worked at the University of South Africa as a picker</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
       <!-- ***** Work Section ***** -->
       <section class="work" id="work">
         <div class="row">
@@ -167,6 +205,30 @@
         </div>
       </section>
 
+      <!-- ***** Design Start Section (New) ***** -->
+      <section class="design-start" id="design-start">
+        <div class="row">
+          <h2>Design Showcase</h2>
+          <div class="design-start__cards">
+            <div class="design-card">
+              <div class="design-card__image-container">
+                <img src="./Images/7EVEN.png" alt="Design Project 1 Poster" />
+              </div>
+            </div>
+            <div class="design-card">
+              <div class="design-card__image-container">
+                <img src="./Images/Brilu Poster.png" alt="Design Project 2 Poster" />
+              </div>
+            </div>
+            <div class="design-card">
+              <div class="design-card__image-container">
+                <img src="./Images/Artboard 1.png" alt="Design Project 3 Poster" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <!-- ***** Clients Section ***** -->
       <section class="client" id="clients">
         <div class="row">
@@ -196,17 +258,25 @@
               <div class="browser-tab">b</div>
             </div>
             <div class="browser-content">
-              <p>
-                Hey My name is Brilu and I'm a passionate creative who also
-                has a skill in web design and development. I can do more than most
-                when it comes to creating an interface that is both pleasing to the
-                eye and provides a great user experience. I'm well versed in both
-                front-end and back-end technologies, but I would say my strongest
-                side would be my design capabilities. I'm always eager to learn and
-                implement new design principles and development practices to create
-                visually appealing and highly functional web solutions.
-              </p>
-              <a href="#" class="btn btn--resume">My Resume</a>
+              <!-- Container for your image and text -->
+              <div class="about-me-content-wrapper">
+                <div class="about-me__image-box">
+                  <img src="./images/bri2.png" alt="Brilu Hlongwane" class="about-me__profile-image" />
+                </div>
+                <div class="about-me__text-content">
+                  <p>
+                    Hey My name is Brilu and I'm a passionate creative who also
+                    has a skill in web design , development and some graphic design elements. I can do more than most
+                    when it comes to creating an interface that is both pleasing to the
+                    eye and provides a great user experience. I'm quite versed in both
+                    front-end and back-end technologies, but I would say my strongest
+                    side would be my design capabilities. I'm always eager to learn and
+                    implement new design principles and development practices to create
+                    visually appealing and highly functional web solutions.
+                  </p>
+                  <a href="#" class="btn btn--resume">My Resume</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -218,7 +288,7 @@
           <h2>Get in Touch</h2>
           <div class="contact__info">
             <p>
-              If you would like to get in touch with me, drop a "Hey B 👋 Let's
+              If you would like to get in touch with me, drop a "Hey Bri Let's
               create magic!" through my email. Let's take a chance and I'll help you
               create a website that truly reflects who you are and what you bring
               to this precious world. Hoping to hear from you soon.
@@ -239,26 +309,25 @@
             </a>
           </li>
           <li class="footer__social-link-item">
-            <a href="https://codepen.io/nisar_hassan" title="Link to Codepen Profile" target="_blank" rel="noopener noreferrer">
+            <a href="https://codepen.io/brilu" title="Link to Codepen Profile" target="_blank" rel="noopener noreferrer">
               <img src="./images/codepen.svg" class="footer__social-image" alt="Codepen" />
             </a>
           </li>
           <li class="footer__social-link-item">
-            <a href="https://www.linkedin.com/in/brilu-bokaba-623b54208" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/
+brilu-hlongwane-623b54208
+" target="_blank" rel="noopener noreferrer">
               <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin" />
             </a>
           </li>
         </ul>
-
         <p>
           &copy; 2024 - Developer and Designer
           <a href="#top" class="link">Brilu</a>
         </p>
         <div class="footer__github-buttons">
-          <!-- This iframe is for a GitHub star button, often included in templates.
-               You might want to remove or customize if it doesn't apply directly to your repo. -->
           <iframe
-            src="https://ghbtns.com/github-btn.html?user=nisarhassan12&repo=portfolio-template&type=watch&count=true"
+            src=""
             frameborder="0"
             scrolling="0"
             width="170"
