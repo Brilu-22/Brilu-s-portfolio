@@ -1,347 +1,214 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" type="image/png" href="./images/blogo.svg" />
-    <title>Brilu Hlongwane | Designer. Developer.</title>
-    <meta name="description" content="Brilu Hlongwane's creative portfolio showcasing web design and development projects." />
-    <meta name="keywords" content="Brilu Hlongwane, web designer, web developer, portfolio, frontend, backend, UI/UX" />
+    <meta name="description" content="Brilu Hlongwane - Creative Design Engineer & Developer Portfolio" />
+    <title>Brilu Hlongwane | Design Engineer</title>
+    
+    <!-- 1. Premium Fonts (Clash Display & General Sans) -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+    
+    <!-- 2. Your CSS File -->
     <link rel="stylesheet" href="main.css" />
-  </head>
-  <body>
-    <!-- ***** Header - Matching Image 1 ***** -->
-    <header class="header" role="banner" id="top">
-      <div class="header__content">
-        <h1 class="heading-primary">
-          <span class="blurry-text">Br</span><span class="sharp-text">ilu</span>
-        </h1>
-        <p class="header__description">Designer. Developer</p>
-      </div>
+</head>
+<body>
 
-      <!-- Navigation for the main page -->
-      <nav class="main-nav" role="navigation">
-        <ul class="main-nav__items">
-          <li class="main-nav__item"><a href="#skills" class="main-nav__link">Skills</a></li>
-          <li class="main-nav__item"><a href="#work" class="main-nav__link">Work</a></li>
-          <li class="main-nav__item"><a href="#design-start" class="main-nav__link">Design</a></li>
-          <li class="main-nav__item"><a href="#clients" class="main-nav__link">Clients</a></li>
-          <li class="main-nav__item"><a href="#about" class="main-nav__link">About</a></li>
-          <li class="main-nav__item"><a href="#contact" class="main-nav__link">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+    <!-- ============================================
+         PART 1: THE PRELOADER (Splash Screen)
+         ============================================ -->
+    <div class="preloader">
+        <div class="counter">0</div>
+        <div class="preloader-text">INITIALIZING PORTFOLIO</div>
+    </div>
 
-    <main role="main">
-      <!-- ***** Skills Section (New) ***** -->
-      <section class="skills" id="skills">
-        <div class="row">
-          <h2>My Skills</h2>
-          <div class="skills__container">
-            <div class="skills__category">
-              <h3>Tech Skills</h3>
-              <ul class="skills__list">
-                <li>HTML</li>
-                <li>CSS</li>
-                <li>React</li>
-                <li>React Native</li>
-                <li>JavaScript</li>
-                <li>PHP</li>
-                <li>Python</li>
-                <li>SCSS</li>
-              </ul>
-            </div>
-            <div class="skills__category">
-              <h3>Design Skills</h3>
-              <ul class="skills__list">
-                <li>Adobe Illustrator</li>
-                <li>Figma</li>
-                <li>Squarespace</li>
-                <li>Adobe Photoshop</li>
-              </ul>
-            </div>
-          </div>
-          <div class="general-qualities">
-            <h3>General Qualities</h3>
-            <ul class="qualities__list">
-              <li>People's person</li>
-              <li>Great customer skills - worked at the school information centre and the library</li>
-              <li>Participated in the school's open days as a school guide for future students and parents</li>
-              <li>Worked at the University of South Africa as a picker</li>
-            </ul>
-          </div>
-        </div>
-      </section>
+    <!-- ============================================
+         PART 2: SMOOTH SCROLL WRAPPER
+         ============================================ -->
+    <div id="main-content">
+        
+        <!-- HEADER / NAVIGATION -->
+        <header class="header">
+            <div class="logo">Brilu.</div>
+            <nav class="nav">
+                <!-- Smooth Scroll Anchor Links -->
+                <a href="#skills">Skills</a>
+                <a href="#work">Work</a>
+                <!-- Link to separate Gallery Page -->
+                <a href="gallery.html">Gallery</a> 
+                <a href="#about">About</a>
+                <a href="#contact" class="btn-contact">Let's Talk</a>
+            </nav>
+        </header>
 
-      <!-- ***** Work Section ***** -->
-      <section class="work" id="work">
-        <div class="row">
-          <h2>My Work</h2>
-          <div class="work__boxes">
-            <!-- Project 1: NBA Website -->
-            <div class="work__box">
-              <div class="work__text">
-                <h3>NBA Website</h3>
-                <p>
-                  This is a website I had to build for a school project for the NBA using their local API.
-                  It's a redesign of the official NBA website, focusing on modern aesthetics and user experience.
-                </p>
-                <ul class="work__list">
-                  <li>React</li>
-                  <li>Next.js</li>
-                  <li>Node</li>
-                  <li>NBA API</li>
-                </ul>
-                <div class="work__links">
-                  <a href="#" class="link__text">
-                    Visit Site <span>&rarr;</span>
-                  </a>
-                  <a href="https://github.com/Brilu-22/newapp.git" target="_blank" rel="noopener noreferrer">
-                    <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub" />
-                  </a>
+        <main>
+            <!-- HERO SECTION -->
+            <section class="hero">
+                <div class="hero-text-container">
+                    <h1 class="hero-title">
+                        <div class="line"><span>Creative</span></div>
+                        <div class="line"><span>Design</span></div>
+                        <div class="line"><span>Engineer</span></div>
+                    </h1>
+                    <p class="hero-sub">I build digital products that function flawlessly and look immaculate.</p>
                 </div>
-              </div>
-              <div class="work__image-box">
-                <img src="./images/NBA.png" class="work__image" alt="NBA Website Project" />
-              </div>
-            </div>
+            </section>
 
-            <!-- Project 2: EQ - The best electronics made for you -->
-            <div class="work__box">
-              <div class="work__text">
-                <h3>EQ : The best electronics made for you</h3>
-                <p>
-                  EQ is an e-commerce website we developed as part of a group project, showcasing premium
-                  headsets designed for an unparalleled listening experience for music enthusiasts.
-                </p>
-                <ul class="work__list">
-                  <li>React</li>
-                  <li>CSS3</li>
-                  <li>ReactBootstrap</li>
-                  <li>ReactRouter</li>
-                  <li>NodeJS</li>
-                  <li>MongoDB</li>
-                  <li>Mongoose</li>
-                  <li>Express</li>
-                </ul>
-                <div class="work__links">
-                  <a href="#" class="link__text">
-                    Visit Site <span>&rarr;</span>
-                  </a>
-                  <a href="https://github.com/KurtSchwimmbacher/DV200T2GroupAssignment.git" target="_blank" rel="noopener noreferrer">
-                    <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub" />
-                  </a>
+            <!-- SKILLS MARQUEE (New "Award Winning" way to show skills) -->
+            <section class="skills-marquee" id="skills">
+                <div class="marquee-track">
+                    <!-- Duplicated list for infinite scroll effect -->
+                    <span>REACT NATIVE • VUE.JS • .NET CORE • GSAP • TYPESCRIPT • FIGMA • UI/UX • PYTHON • SQL SERVER • REACT NATIVE • VUE.JS • .NET CORE • GSAP •</span>
                 </div>
-              </div>
-              <div class="work__image-box">
-                <img src="./images/EQ.jpg" class="work__image" alt="EQ Electronics Project" />
-              </div>
-            </div>
+            </section>
 
-            <!-- Project 3: Selah -->
-            <div class="work__box">
-              <div class="work__text">
-                <h3>Selah</h3>
-                <p>
-                  Selah is an interactive Questions and Answer website where users can post questions and
-                  provide answers. It features user authentication with sign-up and login, storing credentials
-                  in a MySQL database.
-                </p>
-                <ul class="work__list">
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>SCSS</li>
-                  <li>GSAP</li>
-                  <li>JavaScript</li>
-                  <li>MySql</li>
-                  <li>Php</li>
-                </ul>
-                <div class="work__links">
-                  <a href="#" class="link__text">
-                    Visit Site <span>&rarr;</span>
-                  </a>
-                  <a href="https://github.com/Brilu-22/Php_Project.git" target="_blank" rel="noopener noreferrer">
-                    <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub" />
-                  </a>
+            <!-- WORK SECTION (Project Links) -->
+            <section class="work-section" id="work">
+                <div class="section-header">
+                    <p>SELECTED WORKS</p>
+                    <h2>(2023 — 2024)</h2>
                 </div>
-              </div>
-              <div class="work__image-box">
-                <img src="./Images/Selah.png" class="work__image" alt="Selah Q&A Project" />
-              </div>
-            </div>
 
-            <!-- Project 4: Khanyisa -->
-            <div class="work__box">
-              <div class="work__text">
-                <h3>Khanyisa</h3>
-                <p>
-                  Khanyisa is a web application created for the City of Tshwane's Department to simplify
-                  electricity token purchases and management. Users can buy electricity, enter their meter box number,
-                  and receive tokens either manually or automatically. It also features live chat/chatbot support.
-                </p>
-                <ul class="work__list">
-                  <li>HTML</li>
-                  <li>CSS</li>
-                  <li>JavaScript</li>
-                  <li>PHP</li>
-                  <li>MySQL</li>
-                  <li>AWS EC2</li>
-                  <li>Cloud SQL</li>
-                </ul>
-                <div class="work__links">
-                  <a href="#" class="link__text">
-                    Visit Site <span>&rarr;</span>
-                  </a>
-                  <a href="https://github.com/Brilu-22/City.git" target="_blank" rel="noopener noreferrer">
-                    <img src="./images/github.svg" class="work__code" title="View Source Code" alt="GitHub" />
-                  </a>
+                <!-- Project 1: Cloud & Code -->
+                <div class="project-item">
+                    <!-- Links to separate project page -->
+                    <a href="project-cloud.html" class="project-link"> 
+                        <div class="project-info">
+                            <h3>Cloud & Code</h3>
+                            <p>Vue.js / .NET Core / SQL</p>
+                        </div>
+                        <!-- Hover Image Reveal -->
+                        <div class="project-img-wrapper">
+                            <img src="./images/CC.svg" alt="Cloud and Code Dashboard">
+                        </div>
+                    </a>
                 </div>
-              </div>
-              <div class="work__image-box">
-                <img src="./images/Khanyisa.png" class="work__image" alt="Khanyisa City of Tshwane Project" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      <!-- ***** Design Start Section (New) ***** -->
-      <section class="design-start" id="design-start">
-        <div class="row">
-          <h2>Design Showcase</h2>
-          <div class="design-start__cards">
-            <div class="design-card">
-              <div class="design-card__image-container">
-                <img src="./Images/7EVEN.png" alt="Design Project 1 Poster" />
-              </div>
-            </div>
-            <div class="design-card">
-              <div class="design-card__image-container">
-                <img src="./Images/Brilu Poster.png" alt="Design Project 2 Poster" />
-              </div>
-            </div>
-            <div class="design-card">
-              <div class="design-card__image-container">
-                <img src="./Images/Artboard 1.png" alt="Design Project 3 Poster" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ***** Clients Section ***** -->
-      <section class="client" id="clients">
-        <div class="row">
-          <h2>Clients</h2>
-          <div class="client__logos">
-            <div class="client__item">
-              <img src="./images/Dips Robotics Logo.png" class="client__logo" alt="Dips Robotics Logo" />
-              <h3>Dips Robotics</h3>
-            </div>
-            <div class="client__item">
-              <img src="./images/loretologo.png" class="client__logo" alt="Loreto Convent Logo" />
-              <h3>Loreto Convent</h3>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ***** About Section - Matching Image 3 (Browser Frame) ***** -->
-      <section class="about" id="about">
-        <div class="row">
-          <h2 class="sr-only">About Me</h2>
-          <div class="browser-frame">
-            <div class="browser-controls">
-              <span class="control red"></span>
-              <span class="control yellow"></span>
-              <span class="control green"></span>
-              <div class="browser-tab">b</div>
-            </div>
-            <div class="browser-content">
-              <!-- Container for your image and text -->
-              <div class="about-me-content-wrapper">
-                <div class="about-me__image-box">
-                  <img src="./images/bri2.png" alt="Brilu Hlongwane" class="about-me__profile-image" />
+                <!-- Project 2: Dulce -->
+                <div class="project-item">
+                    <a href="project-dulce.html" class="project-link">
+                        <div class="project-info">
+                            <h3>Dulce Wellness</h3>
+                            <p>React Native / Expo / Firebase</p>
+                        </div>
+                        <div class="project-img-wrapper">
+                            <img src="./images/Dulce.png" alt="Dulce App Interface">
+                        </div>
+                    </a>
                 </div>
-                <div class="about-me__text-content">
-                  <p>
-                    Hey My name is Brilu and I'm a passionate creative who also
-                    has a skill in web design , development and some graphic design elements. I can do more than most
-                    when it comes to creating an interface that is both pleasing to the
-                    eye and provides a great user experience. I'm quite versed in both
-                    front-end and back-end technologies, but I would say my strongest
-                    side would be my design capabilities. I'm always eager to learn and
-                    implement new design principles and development practices to create
-                    visually appealing and highly functional web solutions.
-                  </p>
-                  <a href="#" class="btn btn--resume">My Resume</a>
+
+                <!-- Project 3: Moove -->
+                <div class="project-item">
+                    <a href="project-moove.html" class="project-link">
+                        <div class="project-info">
+                            <h3>Moove AI</h3>
+                            <p>AI Integration / TypeScript / Groq API</p>
+                        </div>
+                        <div class="project-img-wrapper">
+                            <img src="./images/moove1.svg" alt="Moove App Interface">
+                        </div>
+                    </a>
                 </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+            </section>
 
-      <!-- ***** Contact Section ***** -->
-      <section class="contact" id="contact">
-        <div class="row">
-          <h2>Get in Touch</h2>
-          <div class="contact__info">
-            <p>
-              If you would like to get in touch with me, drop a "Hey Bri Let's
-              create magic!" through my email. Let's take a chance and I'll help you
-              create a website that truly reflects who you are and what you bring
-              to this precious world. Hoping to hear from you soon.
-            </p>
-            <a href="mailto:zech01hlongwane@gmail.com" class="btn">zech01hlongwane@gmail.com</a>
-          </div>
-        </div>
-      </section>
-    </main>
+            <!-- DESIGN / GALLERY TEASER -->
+            <section class="design-teaser">
+                <div class="design-content-center">
+                    <h2>Visual Playground</h2>
+                    <p>Poster Design, Art Direction & Experiments</p>
+                    <a href="gallery.html" class="gallery-btn">View Full Gallery <span class="arrow">→</span></a>
+                </div>
+            </section>
 
-    <!-- ***** Footer ***** -->
-    <footer role="contentinfo" class="footer">
-      <div class="row">
-        <ul class="footer__social-links">
-          <li class="footer__social-link-item">
-            <a href="https://github.com/Brilu-22" target="_blank" rel="noopener noreferrer">
-              <img src="./images/github.svg" class="footer__social-image" alt="Github" />
-            </a>
-          </li>
-          <li class="footer__social-link-item">
-            <a href="https://codepen.io/brilu" title="Link to Codepen Profile" target="_blank" rel="noopener noreferrer">
-              <img src="./images/codepen.svg" class="footer__social-image" alt="Codepen" />
-            </a>
-          </li>
-          <li class="footer__social-link-item">
-            <a href="https://www.linkedin.com/in/
-brilu-hlongwane-623b54208
-" target="_blank" rel="noopener noreferrer">
-              <img src="./images/linkedin.svg" title="Link to Linkedin Profile" class="footer__social-image" alt="Linkedin" />
-            </a>
-          </li>
-        </ul>
-        <p>
-          &copy; 2024 - Developer and Designer
-          <a href="#top" class="link">Brilu</a>
-        </p>
-        <div class="footer__github-buttons">
-          <iframe
-            src=""
-            frameborder="0"
-            scrolling="0"
-            width="170"
-            height="20"
-            title="Watch Portfolio Template on GitHub"
-          >
-          </iframe>
-        </div>
-      </div>
-    </footer>
+            <!-- ABOUT SECTION (Browser Window Style) -->
+            <section class="about-section" id="about">
+                <div class="browser-window">
+                    <div class="window-header">
+                        <div class="dots">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                        </div>
+                        <div class="address-bar">about-brilu.com</div>
+                    </div>
+                    <div class="window-body">
+                        <div class="bio-grid">
+                            <div class="bio-img">
+                                <img src="./images/bri2.png" alt="Brilu Hlongwane">
+                            </div>
+                            <div class="bio-text">
+                                <h3>Hey, I'm Brilu.</h3>
+                                <p>
+                                    I'm a passionate creative bridging the gap between design and development. 
+                                    I can do more than most when it comes to creating an interface that is both 
+                                    pleasing to the eye and provides a great user experience.
+                                </p>
+                                <p>
+                                    Whether it's the logic of <strong>.NET Core</strong> or the creativity of 
+                                    <strong>Figma</strong>, I thrive on building complete solutions.
+                                </p>
+                                <a href="#" class="resume-btn">Download Resume</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
 
-    <a href="#top" class="back-to-top" title="Back to Top">
-      <img src="./images/arrow-up.svg" alt="Back to Top" class="back-to-top__image" />
-    </a>
-    <script src="./main.js"></script>
-  </body>
+            <!-- FOOTER / CONTACT -->
+            <footer class="footer" id="contact">
+                <p class="footer-label">GOT AN IDEA?</p>
+                <h2>Let's create magic.</h2>
+                <a href="mailto:zech01hlongwane@gmail.com" class="email-link">zech01hlongwane@gmail.com</a>
+                
+                <div class="footer-bottom">
+                    <p>© 2024 Brilu Hlongwane</p>
+                    <div class="socials">
+                        <a href="https://www.linkedin.com/in/brilu-hlongwane-623b54208" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Brilu-22" target="_blank">GitHub</a>
+                        <a href="https://codepen.io/brilu" target="_blank">CodePen</a>
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- ============================================
+         PART 3: SCRIPTS (Optimized Installation)
+         ============================================ -->
+         
+    <!-- 1. GSAP Core -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
+
+    <!-- 2. ScrollTrigger -->
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
+
+    <!-- 3. Lenis (Smooth Scroll) -->
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+
+    <!-- 4. Initialization Script -->
+    <script>
+        document.addEventListener("DOMContentLoaded", (event) => {
+            // Register GSAP Plugin
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Initialize Lenis Smooth Scroll
+            const lenis = new Lenis({
+                duration: 1.2,
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            });
+
+            function raf(time) {
+                lenis.raf(time);
+                ScrollTrigger.update(); // Sync GSAP with Lenis
+                requestAnimationFrame(raf);
+            }
+            requestAnimationFrame(raf);
+        });
+    </script>
+    
+    <!-- 5. Your Main Animation Logic -->
+    <script src="main.js"></script>
+
+</body>
 </html>

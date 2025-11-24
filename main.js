@@ -1,50 +1,112 @@
-// Accessibility: Add a class to the body when the user starts tabbing for better focus styles
-const handleFirstTab = (e) => {
-  if (e.key === "Tab") {
-    document.body.classList.add("user-is-tabbing");
-    window.removeEventListener("keydown", handleFirstTab);
-    window.addEventListener("mousedown", handleMouseDownOnce);
-  }
-};
-
-const handleMouseDownOnce = () => {
-  document.body.classList.remove("user-is-tabbing");
-  window.removeEventListener("mousedown", handleMouseDownOnce);
-  window.addEventListener("keydown", handleFirstTab);
-};
-
-window.addEventListener("keydown", handleFirstTab);
-
-
-// Back to Top button functionality
-const backToTopButton = document.querySelector(".back-to-top");
-let isBackToTopRendered = false;
-
-// Function to control the visibility and animation of the back-to-top button
-const alterStyles = (isVisible) => {
-  backToTopButton.style.visibility = isVisible ? "visible" : "hidden";
-  backToTopButton.style.opacity = isVisible ? 1 : 0;
-  backToTopButton.style.transform = isVisible ? "scale(1)" : "scale(0)";
-};
-
-// Event listener for scroll to show/hide the button
-window.addEventListener("scroll", () => {
-  if (window.scrollY > 700) { // Show button after scrolling 700px down
-    if (!isBackToTopRendered) {
-      isBackToTopRendered = true;
-      alterStyles(isBackToTopRendered);
-    }
-  } else {
-    if (isBackToTopRendered) {
-      isBackToTopRendered = false;
-      alterStyles(isBackToTopRendered);
-    }
-  }
+// 1. Initialize Lenis (Smooth Scrolling)
+const lenis = new Lenis({
+    duration: 1.2,
+    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+    direction: 'vertical',
+    gestureDirection: 'vertical',
+    smooth: true,
+    mouseMultiplier: 1,
+    smoothTouch: false,
+    touchMultiplier: 2,
 });
 
-// Note: The "Table of Content" page functionality (Image 2)
-// would typically involve a separate HTML file (e.g., `toc.html`) or
-// dynamic JavaScript to show/hide an overlay.
-// If you want `toc.html` as a separate page, simply create that file
-// and copy the `table-of-content-page` HTML structure into it.
-// Then link to it from your main page, e.g., `<a href="toc.html">Table of Content</a>`.
+function raf(time) {
+    lenis.raf(time);
+    requestAnimationFrame(raf);
+}
+requestAnimationFrame(raf);
+
+// 2. GSAP Animations
+gsap.registerPlugin(ScrollTrigger);
+
+// --- PRELOADER ANIMATION ---
+const tl = gsap.timeline();
+
+// Counter Logic
+function startLoader() {
+    let counterElement = document.querySelector(".counter");
+    let currentValue = 0;
+
+    function updateCounter() {
+        if (currentValue === 100) {
+            return;
+        }
+        currentValue += Math.floor(Math.random() * 10) + 1;
+        if (currentValue > 100) currentValue = 100;
+        
+        counterElement.textContent = currentValue;
+        
+        let delay = Math.floor(Math.random() * 200) + 50;
+        setTimeout(updateCounter, delay);
+    }
+    updateCounter();
+}
+
+startLoader();
+
+// Reveal Site after loader finishes
+tl.to(".counter", 0.25, {
+    delay: 3.5, // Wait for the numbers to likely finish
+    opacity: 0,
+});
+
+tl.to(".preloader", 0.8, {
+    height: 0,
+    ease: "power4.inOut",
+});
+
+// Hero Text Reveal (Staggered)
+tl.to(".line span", {
+    y: 0,
+    duration: 1,
+    stagger: 0.1,
+    ease: "power3.out",
+    delay: -0.5
+});
+
+// --- SCROLL ANIMATIONS ---
+
+// Work Section: Items fade in and slide up
+gsap.utils.toArray(".project-item").forEach((item) => {
+    gsap.from(item, {
+        scrollTrigger: {
+            trigger: item,
+            start: "top 80%",
+        },
+        y: 100,
+        opacity: 0,
+        duration: 1,
+        ease: "power3.out"
+    });
+});
+
+// Browser Window: Scale up effect
+gsap.from(".browser-window", {
+    scrollTrigger: {
+        trigger: ".about-section",
+        start: "top 70%",
+        end: "top 20%",
+        scrub: 1
+    },
+    scale: 0.8,
+    opacity: 0.5,
+    duration: 1
+});
+
+// --- MOUSE FOLLOWER FOR PROJECT IMAGES ---
+// This makes the project image follow the mouse inside the link
+const projects = document.querySelectorAll('.project-item');
+
+projects.forEach((project) => {
+    const img = project.querySelector('.project-img-wrapper');
+    
+    project.addEventListener('mousemove', (e) => {
+        const x = e.clientX;
+        const y = e.clientY;
+        
+        // Move the image wrapper to mouse position
+        // We use fixed positioning in CSS, so we just update Left/Top
+        img.style.left = x + 'px';
+        img.style.top = y + 'px';
+    });
+});

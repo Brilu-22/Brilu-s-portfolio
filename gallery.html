@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design Gallery | Brilu</title>
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,600&display=swap" rel="stylesheet">
+    <style>
+        /* Inline CSS for the Gallery Page specific styles */
+        body { font-family: 'Clash Display', sans-serif; background: #111; color: #fff; margin:0; padding: 2rem; }
+        .gallery-nav { margin-bottom: 4rem; display: flex; justify-content: space-between; align-items: center; }
+        .gallery-nav a { color: #fff; text-decoration: none; font-size: 1.2rem; border: 1px solid #fff; padding: 10px 20px; border-radius: 50px;}
+        
+        h1 { font-size: 4rem; margin-bottom: 2rem; text-transform: uppercase; }
+        
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+        
+        .gallery-item {
+            background: #222;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <nav class="gallery-nav">
+        <a href="index.html">← Back Home</a>
+        <span>SELECTED POSTERS '24</span>
+    </nav>
+
+    <h1>Visual Playground</h1>
+
+    <div class="gallery-grid">
+        <!-- Add as many as you like -->
+        <div class="gallery-item"><img src="./Images/7EVEN.png" alt="Art"></div>
+        <div class="gallery-item"><img src="./Images/Brilu Poster.png" alt="Art"></div>
+        <div class="gallery-item"><img src="./Images/Artboard 1.png" alt="Art"></div>
+        <!-- Placeholders -->
+        <div class="gallery-item"><img src="https://placehold.co/600x800/222/fff?text=Poster+4" alt="Art"></div>
+        <div class="gallery-item"><img src="https://placehold.co/600x600/333/fff?text=Square+Art" alt="Art"></div>
+        <div class="gallery-item"><img src="https://placehold.co/600x900/444/fff?text=Tall+Poster" alt="Art"></div>
+    </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+    <script>
+        // Simple smooth scroll for gallery page
+        const lenis = new Lenis();
+        function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+        requestAnimationFrame(raf);
+    </script>
+</body>
+</html>
