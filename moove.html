@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MOVE FitCal | Brilu Hlongwane</title>
+    <!-- Fonts -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="main.css">
+    
+    <style>
+        /* --- PROJECT SPECIFIC INLINE STYLES --- */
+        
+        .project-hero {
+            padding-top: 20vh;
+            padding-bottom: 10vh;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .ph-title {
+            font-family: var(--font-heading);
+            font-size: 10vw;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 4rem;
+        }
+
+        /* The Grid for Project Details */
+        .project-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid #ccc;
+            padding-top: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .meta-col h4 {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .meta-col p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Large Parallax Image */
+        .hero-image-container {
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 110%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Case Study Content */
+        .case-study-content {
+            padding: 10rem 20%;
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .case-study-content h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            margin-top: 4rem;
+        }
+
+        .content-image-full {
+            width: 90%;
+            margin: 5rem auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            background: #f8f8f8;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .stat-card {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .stat-number {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            opacity: 0.7;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-tag {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Next Project Navigation */
+        .next-project {
+            background: #000;
+            color: #fff;
+            padding: 10rem 5%;
+            display: block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-label {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .next-title {
+            font-family: var(--font-heading);
+            font-size: 8vw;
+            text-transform: uppercase;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+
+        .next-project:hover .next-title {
+            transform: translateX(20px);
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .project-meta-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .case-study-content { padding: 5rem 5%; }
+            .feature-grid { grid-template-columns: 1fr; }
+            .stats-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Smooth Scroll Wrapper -->
+    <div id="main-content">
+        
+        <!-- Navigation -->
+        <header class="header">
+            <div class="logo"><a href="index.html" style="color:inherit; text-decoration:none;">Brilu.</a></div>
+            <nav class="nav">
+                <a href="index.html">Back Home</a>
+            </nav>
+        </header>
+
+        <main>
+            <!-- 1. Text Hero -->
+            <section class="project-hero">
+                <h1 class="ph-title">MOOVE<br>AI Coach</h1>
+                
+                <div class="project-meta-grid">
+                    <div class="meta-col">
+                        <h4>Role</h4>
+                        <p>Lead Architect</p>
+                    </div>
+                    <div class="meta-col">
+                        <h4>Year</h4>
+                        <p>2024</p>
+                    </div>
+                    <div class="meta-col">
+                        <h4>Stack</h4>
+                        <p>React Native, .NET Core</p>
+                    </div>
+                    <div class="meta-col">
+                        <h4>Live</h4>
+                        <p><a href="#" target="_blank" style="color:inherit;">View Demo ↗</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Parallax Banner Image -->
+            <div class="hero-image-container">
+                <img src="./images/moove1.svg" alt="MOVE FitCal App" class="parallax-img">
+            </div>
+
+            <!-- 3. The Case Study Story -->
+            <section class="case-study-content">
+                <p class="reveal-text">
+                    MOVE FitCal is an AI-powered fitness companion where sports performance meets iOS elegance. 
+                    This intelligent platform transforms fitness journeys through personalized AI guidance, 
+                    combining cutting-edge technology with premium design to create the ultimate fitness experience.
+                </p>
+
+                <h2>The Vision</h2>
+                <p class="reveal-text">
+                    "We believe fitness technology should be as beautiful as it is functional - inspiring movement through exceptional design." 
+                    MOVE was built to bridge the gap between complex fitness tracking and intuitive user experience, 
+                    leveraging AI to provide truly personalized fitness and nutrition guidance.
+                </p>
+            </section>
+
+            <!-- 4. User Testing Results -->
+            <section class="case-study-content">
+                <h2>User Experience Excellence</h2>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">9.3/10</div>
+                        <div class="stat-label">Ease of Use</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">9.5/10</div>
+                        <div class="stat-label">Navigation</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">100%</div>
+                        <div class="stat-label">Dietary Section</div>
+                    </div>
+                </div>
+                <p class="reveal-text">
+                    Real user testing revealed exceptional satisfaction across all metrics. 
+                    Users praised the intuitive interface, smooth navigation, and the AI's ability to understand their fitness needs.
+                </p>
+            </section>
+
+            <!-- 5. Visual Break -->
+            <img src="./images/moove1.svg" alt="MOVE Dashboard" class="content-image-full reveal-img">
+            
+            <section class="case-study-content">
+                <h2>Core Features</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>AI Workout Plans</h3>
+                        <p>Personalized routines using Google Gemini 2.5 Pro, adaptive duration (30-90 mins), body part focused training with progressive overload principles.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3> Smart Nutrition</h3>
+                        <p>AI-generated meal recommendations with Edamam nutrition analysis, ingredient tracking, and dietary preference customization.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Progress Tracking</h3>
+                        <p>Comprehensive weight trend visualization, fitness metrics dashboard, goal achievement tracking with weekly analytics.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Beautiful UI</h3>
+                        <p>iOS-inspired design language with smooth animations, system-wide dark mode, and WCAG 2.1 AA accessibility compliance.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 6. Technical Architecture -->
+            <section class="case-study-content">
+                <h2>Technical Excellence</h2>
+                
+                <h3>Modern Tech Stack</h3>
+                <div class="tech-stack">
+                    <span class="tech-tag">React Native 0.81.5</span>
+                    <span class="tech-tag">TypeScript 5.9</span>
+                    <span class="tech-tag">Expo Router 6.0</span>
+                    <span class="tech-tag">ASP.NET Core 8.0</span>
+                    <span class="tech-tag">Entity Framework</span>
+                    <span class="tech-tag">Google Gemini 2.5 Pro</span>
+                    <span class="tech-tag">Edamam API</span>
+                    <span class="tech-tag">Firebase Auth</span>
+                </div>
+
+                <p class="reveal-text">
+                    The architecture features a React Native frontend with Expo for cross-platform development, 
+                    backed by a robust ASP.NET Core API. AI integration through Google Gemini provides intelligent workout generation, 
+                    while Edamam powers comprehensive nutrition analysis.
+                </p>
+
+                <h3>Performance Metrics</h3>
+                <p class="reveal-text">
+                    • Instant plan generation (&lt;5 seconds)<br>
+                    • Smooth 60fps animations throughout<br>
+                    • Optimized asset loading and data rendering<br>
+                    • Efficient real-time synchronization<br>
+                    • Offline capability ready architecture
+                </p>
+            </section>
+
+            <!-- 7. Design Philosophy -->
+            <section class="case-study-content">
+                <h2>Design Philosophy</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>Athletic Energy</h3>
+                        <p>Dynamic color gradients inspired by sports apparel, motion design reflecting physical activity, energetic yet professional tone.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>iOS Clarity</h3>
+                        <p>SF Pro typography system, consistent 8pt grid spacing, familiar navigation patterns for instant usability.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Dark Theme Excellence</h3>
+                        <p>True black backgrounds for OLED optimization, carefully calibrated contrast ratios, reduced eye strain during extended use.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Accessibility First</h3>
+                        <p>WCAG 2.1 AA compliance throughout, VoiceOver and TalkBack support, dynamic type scaling.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 8. Next Project Footer -->
+            <a href="cc.html" class="next-project">
+                <span class="next-label">Next Project</span>
+                <span class="next-title">Cloud & Code</span>
+            </a>
+
+            <!-- Standard Footer -->
+            <footer class="footer">
+                <div class="footer-bottom">
+                    <p>© 2025 Brilu Hlongwane</p>
+                    <div class="socials">
+                        <a href="#">LinkedIn</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+    
+    <script>
+        // 1. Initialize Lenis Smooth Scroll
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // 2. Register GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- ANIMATIONS ---
+
+        // Hero Text Reveal (Slide up)
+        gsap.from(".ph-title", {
+            y: 100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power4.out",
+            delay: 0.2
+        });
+
+        // Meta Grid Fade In
+        gsap.from(".project-meta-grid", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.6
+        });
+
+        // Parallax Image Effect
+        gsap.to(".parallax-img", {
+            yPercent: 20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero-image-container",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Reveal Text Paragraphs on Scroll
+        const textElements = document.querySelectorAll(".reveal-text");
+        textElements.forEach(text => {
+            gsap.from(text, {
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 85%",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // Image Reveal (Scale Up)
+        gsap.from(".reveal-img", {
+            scrollTrigger: {
+                trigger: ".reveal-img",
+                start: "top 80%",
+            },
+            scale: 0.9,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out"
+        });
+
+        // Stats Animation
+        gsap.from(".stat-card", {
+            scrollTrigger: {
+                trigger: ".stats-grid",
+                start: "top 80%",
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+        // Feature Cards Animation
+        gsap.from(".feature-card", {
+            scrollTrigger: {
+                trigger: ".feature-grid",
+                start: "top 80%",
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+    </script>
+</body>
+</html>

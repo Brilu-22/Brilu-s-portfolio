@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dulce Wellness | Brilu Hlongwane</title>
+    <!-- Fonts -->
+    <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
+    <!-- Main CSS -->
+    <link rel="stylesheet" href="main.css">
+    
+    <style>
+        /* --- PROJECT SPECIFIC INLINE STYLES --- */
+        
+        .project-hero {
+            padding-top: 20vh;
+            padding-bottom: 10vh;
+            padding-left: 5%;
+            padding-right: 5%;
+        }
+
+        .ph-title {
+            font-family: var(--font-heading);
+            font-size: 10vw;
+            line-height: 0.9;
+            text-transform: uppercase;
+            margin-bottom: 4rem;
+        }
+
+        /* The Grid for Project Details */
+        .project-meta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            border-top: 1px solid #ccc;
+            padding-top: 2rem;
+            margin-bottom: 5rem;
+        }
+
+        .meta-col h4 {
+            font-size: 0.9rem;
+            opacity: 0.6;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+
+        .meta-col p {
+            font-size: 1.2rem;
+            font-weight: 500;
+        }
+
+        /* Large Parallax Image */
+        .hero-image-container {
+            width: 100%;
+            height: 80vh;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .hero-image-container img {
+            width: 100%;
+            height: 110%;
+            object-fit: cover;
+            object-position: center;
+        }
+
+        /* Case Study Content */
+        .case-study-content {
+            padding: 10rem 20%;
+            font-size: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .case-study-content h2 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            margin-top: 4rem;
+        }
+
+        .content-image-full {
+            width: 90%;
+            margin: 5rem auto;
+            display: block;
+            border-radius: 8px;
+        }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            background: #f8f8f8;
+            padding: 2rem;
+            border-radius: 12px;
+        }
+
+        .feature-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Tech Stack */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-tag {
+            background: #000;
+            color: #fff;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Next Project Navigation */
+        .next-project {
+            background: #000;
+            color: #fff;
+            padding: 10rem 5%;
+            display: block;
+            text-decoration: none;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .next-label {
+            font-size: 1rem;
+            opacity: 0.7;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .next-title {
+            font-family: var(--font-heading);
+            font-size: 8vw;
+            text-transform: uppercase;
+            line-height: 1;
+            transition: transform 0.3s;
+        }
+
+        .next-project:hover .next-title {
+            transform: translateX(20px);
+            color: #ccc;
+        }
+
+        @media (max-width: 768px) {
+            .project-meta-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+            .case-study-content { padding: 5rem 5%; }
+            .feature-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Smooth Scroll Wrapper -->
+    <div id="main-content">
+        
+        <!-- Navigation -->
+        <header class="header">
+            <div class="logo"><a href="index.html" style="color:inherit; text-decoration:none;">Brilu.</a></div>
+            <nav class="nav">
+                <a href="index.html">Back Home</a>
+            </nav>
+        </header>
+
+        <main>
+            <!-- 1. Text Hero -->
+            <section class="project-hero">
+                <h1 class="ph-title">Dulce<br>Wellness</h1>
+                
+                <div class="project-meta-grid">
+                    <div class="meta-col">
+                        <h4>Role</h4>
+                        <p>Full Stack Dev</p>
+                    </div>
+                    <div class="meta-col">
+                        <h4>Year</h4>
+                        <p>2024</p>
+                    </div>
+                    <div class="meta-col">
+                        <h4>Stack</h4>
+                        <p>React Native, Firebase</p>
+                    </div>
+                    <div class="meta-col">
+                        <h4>Live</h4>
+                        <p><a href="#" target="_blank" style="color:inherit;">View Demo ↗</a></p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 2. Parallax Banner Image -->
+            <div class="hero-image-container">
+                <img src="./images/Dulce.png" alt="Dulce Wellness App" class="parallax-img">
+            </div>
+
+            <!-- 3. The Case Study Story -->
+            <section class="case-study-content">
+                <p class="reveal-text">
+                    Dulce (pronounced Dool-say) is a thoughtfully designed mental wellness application that serves as a digital sanctuary. 
+                    Built with accessibility and sensory sensitivity in mind, it replaces complex UI with fluid, gesture-based interactions 
+                    to create a predictable and calming environment perfect for users on the autism spectrum or anyone seeking mindful digital experiences.
+                </p>
+
+                <h2>The Challenge</h2>
+                <p class="reveal-text">
+                    Modern mental health apps often overwhelm users with complex interfaces and excessive features. 
+                    Dulce needed to provide meaningful wellness tools while maintaining an exceptionally calm and predictable environment. 
+                    The challenge was balancing functionality with sensory-friendly design principles.
+                </p>
+            </section>
+
+            <!-- 4. Visual Break (Mockup Grid) -->
+            <img src="./images/Dulce.png" alt="Dulce Dashboard" class="content-image-full reveal-img">
+            
+            <section class="case-study-content">
+                <h2>Design Philosophy</h2>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <h3>One-Color Aesthetic</h3>
+                        <p>Exclusive use of deep Olive Green (#4E6813) and its tints for visual cohesion and reduced sensory overload.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Gesture-First Interface</h3>
+                        <p>Intuitive swipe and tap interactions that reduce cognitive load and create fluid user experiences.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Predictable Environment</h3>
+                        <p>Consistent patterns and animations create a safe digital space for users with sensory sensitivities.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>Non-Verbal Alternatives</h3>
+                        <p>Multiple ways to engage without requiring verbal expression, including video diaries and visual mood tracking.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5. Features Section -->
+            <section class="case-study-content">
+                <h2>Core Features</h2>
+                
+                <h3>Mindful Activities & Games</h3>
+                <p class="reveal-text">
+                    Zen Slide Puzzle with smooth React Native Reanimated transitions, Willowisp Maze with real-time Firebase synchronization, 
+                    Guided Breathing exercises with custom animations, and Starlight Tap rhythm-based constellation finder.
+                </p>
+
+                <h3>Personal Reflection</h3>
+                <p class="reveal-text">
+                    Text Journal with Firebase Firestore real-time sync, Video Diary with Cloudinary integration for secure uploads, 
+                    and Mood Analytics with Gifted Charts for visual trend analysis.
+                </p>
+
+                <h3>Progress & Motivation</h3>
+                <p class="reveal-text">
+                    Daily Streaks with visual rewards, Progress Dashboard with live activity completion metrics, 
+                    and Leaderboards for friendly competition in mindful games.
+                </p>
+            </section>
+
+            <!-- 6. Tech Stack -->
+            <section class="case-study-content">
+                <h2>Technical Architecture</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">React Native</span>
+                    <span class="tech-tag">Expo SDK 49+</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Firebase</span>
+                    <span class="tech-tag">React Native Reanimated</span>
+                    <span class="tech-tag">Gesture Handler</span>
+                    <span class="tech-tag">Cloudinary</span>
+                    <span class="tech-tag">Gifted Charts</span>
+                </div>
+                <p class="reveal-text">
+                    The application uses React Context API for state management (AuthContext, MusicContext) and custom hooks for reusable business logic. 
+                    The component-based architecture ensures maintainability while the gesture-first interface provides native-like performance.
+                </p>
+            </section>
+
+            <!-- 7. Next Project Footer -->
+            <a href="moove.html" class="next-project">
+                <span class="next-label">Next Project</span>
+                <span class="next-title">MOVE FitCal</span>
+            </a>
+
+            <!-- Standard Footer -->
+            <footer class="footer">
+                <div class="footer-bottom">
+                    <p>© 2024 Brilu Hlongwane</p>
+                    <div class="socials">
+                        <a href="#">LinkedIn</a>
+                        <a href="#">GitHub</a>
+                    </div>
+                </div>
+            </footer>
+
+        </main>
+    </div>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
+    
+    <script>
+        // 1. Initialize Lenis Smooth Scroll
+        const lenis = new Lenis();
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
+        requestAnimationFrame(raf);
+
+        // 2. Register GSAP
+        gsap.registerPlugin(ScrollTrigger);
+
+        // --- ANIMATIONS ---
+
+        // Hero Text Reveal (Slide up)
+        gsap.from(".ph-title", {
+            y: 100,
+            opacity: 0,
+            duration: 1.5,
+            ease: "power4.out",
+            delay: 0.2
+        });
+
+        // Meta Grid Fade In
+        gsap.from(".project-meta-grid", {
+            y: 50,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out",
+            delay: 0.6
+        });
+
+        // Parallax Image Effect
+        gsap.to(".parallax-img", {
+            yPercent: 20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".hero-image-container",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Reveal Text Paragraphs on Scroll
+        const textElements = document.querySelectorAll(".reveal-text");
+        textElements.forEach(text => {
+            gsap.from(text, {
+                scrollTrigger: {
+                    trigger: text,
+                    start: "top 85%",
+                },
+                y: 50,
+                opacity: 0,
+                duration: 1,
+                ease: "power3.out"
+            });
+        });
+
+        // Image Reveal (Scale Up)
+        gsap.from(".reveal-img", {
+            scrollTrigger: {
+                trigger: ".reveal-img",
+                start: "top 80%",
+            },
+            scale: 0.9,
+            opacity: 0,
+            duration: 1.2,
+            ease: "power2.out"
+        });
+
+        // Feature Cards Animation
+        gsap.from(".feature-card", {
+            scrollTrigger: {
+                trigger: ".feature-grid",
+                start: "top 80%",
+            },
+            y: 50,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out"
+        });
+
+    </script>
+</body>
+</html>
