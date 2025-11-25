@@ -1,112 +1,158 @@
-// 1. Initialize Lenis (Smooth Scrolling)
-const lenis = new Lenis({
-    duration: 1.2,
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-    direction: 'vertical',
-    gestureDirection: 'vertical',
-    smooth: true,
-    mouseMultiplier: 1,
-    smoothTouch: false,
-    touchMultiplier: 2,
-});
+// main.js - CORRECTED VERSION
 
-function raf(time) {
-    lenis.raf(time);
-    requestAnimationFrame(raf);
-}
-requestAnimationFrame(raf);
+document.addEventListener("DOMContentLoaded", function() {
+    console.log("Initializing animations...");
+    
+    // 1. Register GSAP plugins FIRST
+    gsap.registerPlugin(ScrollTrigger);
+    
+    // 2. Initialize Lenis with proper GSAP integration
+    const lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        smooth: true,
+    });
 
-// 2. GSAP Animations
-gsap.registerPlugin(ScrollTrigger);
+    // 3. Link Lenis with GSAP ScrollTrigger
+    lenis.on('scroll', ScrollTrigger.update);
+    
+    // 4. GSAP animation loop tied to Lenis
+    gsap.ticker.add((time) => {
+        lenis.raf(time * 1000);
+    });
+    
+    // 5. Disable GSAP's default scroll listener since we're using Lenis
+    gsap.ticker.lagSmoothing(0);
 
-// --- PRELOADER ANIMATION ---
-const tl = gsap.timeline();
-
-// Counter Logic
-function startLoader() {
-    let counterElement = document.querySelector(".counter");
-    let currentValue = 0;
-
-    function updateCounter() {
-        if (currentValue === 100) {
+    // --- PRELOADER ANIMATION ---
+    function startLoader() {
+        let counterElement = document.querySelector(".counter");
+        if (!counterElement) {
+            console.error("Counter element not found!");
             return;
         }
-        currentValue += Math.floor(Math.random() * 10) + 1;
-        if (currentValue > 100) currentValue = 100;
-        
-        counterElement.textContent = currentValue;
-        
-        let delay = Math.floor(Math.random() * 200) + 50;
-        setTimeout(updateCounter, delay);
+
+        let currentValue = 0;
+
+        function updateCounter() {
+            if (currentValue === 100) {
+                return;
+            }
+            currentValue += Math.floor(Math.random() * 10) + 1;
+            if (currentValue > 100) currentValue = 100;
+            
+            counterElement.textContent = currentValue;
+            
+            let delay = Math.floor(Math.random() * 200) + 50;
+            setTimeout(updateCounter, delay);
+        }
+        updateCounter();
     }
-    updateCounter();
-}
 
-startLoader();
+    // Create main timeline for preloader
+    const tl = gsap.timeline();
+    
+    // Start counter immediately
+    startLoader();
 
-// Reveal Site after loader finishes
-tl.to(".counter", 0.25, {
-    delay: 3.5, // Wait for the numbers to likely finish
-    opacity: 0,
-});
-
-tl.to(".preloader", 0.8, {
-    height: 0,
-    ease: "power4.inOut",
-});
-
-// Hero Text Reveal (Staggered)
-tl.to(".line span", {
-    y: 0,
-    duration: 1,
-    stagger: 0.1,
-    ease: "power3.out",
-    delay: -0.5
-});
-
-// --- SCROLL ANIMATIONS ---
-
-// Work Section: Items fade in and slide up
-gsap.utils.toArray(".project-item").forEach((item) => {
-    gsap.from(item, {
-        scrollTrigger: {
-            trigger: item,
-            start: "top 80%",
-        },
+    // Preloader sequence
+    tl.to(".counter", {
+        opacity: 0,
+        duration: 0.25,
+        delay: 3.5 // Wait for counter
+    })
+    .to(".preloader", {
+        height: 0,
+        duration: 0.8,
+        ease: "power4.inOut"
+    })
+    .from(".line span", {
         y: 100,
         opacity: 0,
         duration: 1,
+        stagger: 0.1,
         ease: "power3.out"
+    }, "-=0.5"); // Overlap with previous animation
+
+    // --- SCROLL ANIMATIONS ---
+
+    // Work Section: Items fade in and slide up
+    const projectItems = gsap.utils.toArray(".project-item");
+    projectItems.forEach((item) => {
+        gsap.from(item, {
+            scrollTrigger: {
+                trigger: item,
+                start: "top 80%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            },
+            y: 100,
+            opacity: 0,
+            duration: 1,
+            ease: "power3.out"
+        });
     });
-});
 
-// Browser Window: Scale up effect
-gsap.from(".browser-window", {
-    scrollTrigger: {
-        trigger: ".about-section",
-        start: "top 70%",
-        end: "top 20%",
-        scrub: 1
-    },
-    scale: 0.8,
-    opacity: 0.5,
-    duration: 1
-});
+    // Browser Window: Scale up effect
+    gsap.from(".browser-window", {
+        scrollTrigger: {
+            trigger: ".about-section",
+            start: "top 80%",
+            end: "top 30%",
+            scrub: 1,
+            markers: false // Set to true to debug scroll positions
+        },
+        scale: 0.8,
+        opacity: 0,
+        duration: 1
+    });
 
-// --- MOUSE FOLLOWER FOR PROJECT IMAGES ---
-// This makes the project image follow the mouse inside the link
-const projects = document.querySelectorAll('.project-item');
-
-projects.forEach((project) => {
-    const img = project.querySelector('.project-img-wrapper');
+    // --- MOUSE FOLLOWER FOR PROJECT IMAGES ---
+    // FIXED VERSION: Using transform for better performance
+    const projects = document.querySelectorAll('.project-item');
     
-    project.addEventListener('mousemove', (e) => {
-        const x = e.clientX;
-        const y = e.clientY;
+    projects.forEach((project) => {
+        const link = project.querySelector('.project-link');
+        const imgWrapper = project.querySelector('.project-img-wrapper');
         
-        // Move the image wrapper to mouse position
-        // We use fixed positioning in CSS, so we just update Left/Top
-        img.style.left = x + 'px';
-        img.style.top = y + 'px';
+        if (!link || !imgWrapper) return;
+        
+        // Show image on hover
+        link.addEventListener('mouseenter', () => {
+            gsap.to(imgWrapper, {
+                opacity: 1,
+                scale: 1,
+                duration: 0.3
+            });
+        });
+        
+        // Hide image on mouse leave
+        link.addEventListener('mouseleave', () => {
+            gsap.to(imgWrapper, {
+                opacity: 0,
+                scale: 0.8,
+                duration: 0.3
+            });
+        });
+        
+        // Move image with mouse
+        link.addEventListener('mousemove', (e) => {
+            const rect = link.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            gsap.to(imgWrapper, {
+                x: x,
+                y: y,
+                duration: 0.1
+            });
+        });
     });
+
+    console.log("All animations initialized!");
+});
+
+// Global error handling for debugging
+window.addEventListener('error', function(e) {
+    console.error('Global error:', e.error);
 });

@@ -6,209 +6,453 @@
     <meta name="description" content="Brilu Hlongwane - Creative Design Engineer & Developer Portfolio" />
     <title>Brilu Hlongwane | Design Engineer</title>
     
-    <!-- 1. Premium Fonts (Clash Display & General Sans) -->
+    <!-- Premium Fonts -->
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
     
-    <!-- 2. Your CSS File -->
-    <link rel="stylesheet" href="main.css" />
+    <!-- Load scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.9/dist/lenis.min.js"></script>
+    
+    <style>
+        /* CSS Reset */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #7c3aed;
+            --accent-light: #8b5cf6;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); /* Custom Easing */
+        }
+
+        html {
+            /* Lenis handles scrolling, so we remove native behavior */
+            scroll-behavior: auto; 
+        }
+
+        body {
+            font-family: 'General Sans', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            overflow-x: hidden;
+            line-height: 1.6;
+            -webkit-font-smoothing: antialiased; /* Crisp text */
+            text-rendering: optimizeLegibility;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Clash Display', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a { color: inherit; text-decoration: none; transition: var(--transition); }
+        button { border: none; background: none; cursor: pointer; font-family: inherit; }
+        img { max-width: 100%; height: auto; display: block; }
+        
+        /* Layout */
+        .container { max-width: 1400px; margin: 0 auto; padding: 0 2rem; }
+
+        /* Preloader */
+        .preloader {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100vh;
+            background: var(--bg-primary);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .counter { font-size: 6rem; font-weight: 700; font-family: 'Clash Display', sans-serif; margin-bottom: 1rem; }
+        .preloader-text { font-size: 1.2rem; letter-spacing: 2px; text-transform: uppercase; color: var(--text-secondary); }
+
+        /* Header */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%;
+            padding: 2rem 4rem;
+            display: flex; justify-content: space-between; align-items: center;
+            z-index: 100;
+            transition: transform 0.3s ease;
+        }
+
+        .logo { font-family: 'Clash Display', sans-serif; font-size: 1.8rem; font-weight: 700; color: var(--text-primary); }
+
+        .nav { display: flex; gap: 2.5rem; align-items: center; }
+        .nav a { font-size: 0.95rem; position: relative; color: var(--text-primary); }
+        .nav a:not(.btn-contact):after {
+            content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px;
+            background: var(--text-primary); transition: var(--transition);
+        }
+        .nav a:not(.btn-contact):hover:after { width: 100%; }
+
+        .btn-contact {
+            background: var(--accent); color: white; padding: 0.7rem 1.5rem;
+            border-radius: 50px; font-weight: 500; transition: var(--transition);
+        }
+        .btn-contact:hover { background: var(--accent-light); transform: scale(1.05); }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh; display: flex; align-items: center;
+            padding: 0 4rem; position: relative; overflow: hidden;
+        }
+        .hero-text-container { max-width: 1200px; width: 100%; }
+        .hero-title { font-size: clamp(3rem, 8vw, 8rem); margin-bottom: 2rem; }
+        
+        .line { overflow: hidden; margin-bottom: -1rem; padding-bottom: 1rem; }
+        .line span { display: inline-block; transform: translateY(110%); will-change: transform; }
+
+        .hero-sub { font-size: 1.4rem; max-width: 600px; color: var(--text-secondary); line-height: 1.6; opacity: 0; }
+
+        /* Skills Marquee */
+        .skills-marquee { padding: 3rem 0; background: var(--bg-secondary); overflow: hidden; }
+        .marquee-track { display: flex; white-space: nowrap; }
+        .marquee-track span { font-size: 1.5rem; font-weight: 500; padding: 0 2rem; color: var(--text-secondary); }
+
+        /* Work Section */
+        .work-section { padding: 8rem 4rem; background: var(--bg-primary); }
+        
+        .section-header { margin-bottom: 5rem; display: flex; justify-content: space-between; align-items: flex-end; }
+        .section-header p { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); }
+        .section-header h2 { font-size: 1.2rem; color: var(--text-secondary); font-weight: 400; }
+
+        .project-item { margin-bottom: 8rem; position: relative; cursor: none; /* Hide default cursor */ }
+
+        .project-link {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 3rem 0; border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: border-color 0.3s; position: relative; z-index: 2;
+        }
+        .project-link:hover { border-bottom-color: var(--accent); }
+
+        .project-info h3 { font-size: 3rem; margin-bottom: 0.5rem; color: var(--text-primary); transition: var(--transition); }
+        .project-link:hover .project-info h3 { transform: translateX(20px); color: var(--text-secondary); }
+        .project-info p { color: var(--text-secondary); font-size: 1.1rem; }
+
+        /* OPTIMIZED IMAGE WRAPPER */
+        .project-img-wrapper {
+            position: fixed; /* Must be fixed for smooth global following */
+            top: 0; left: 0;
+            width: 450px; height: 280px;
+            opacity: 0;
+            pointer-events: none;
+            z-index: 1; /* Behind text */
+            border-radius: 8px;
+            overflow: hidden;
+            /* Center the anchor point */
+            transform: translate(-50%, -50%) scale(0.8);
+            will-change: transform, opacity;
+        }
+        
+        .project-img-wrapper img { width: 100%; height: 100%; object-fit: cover; }
+
+        /* Design Teaser */
+        .design-teaser { padding: 10rem 4rem; background: var(--bg-secondary); text-align: center; }
+        .design-content-center h2 { font-size: 4rem; margin-bottom: 1.5rem; }
+        .design-content-center p { font-size: 1.2rem; color: var(--text-secondary); margin-bottom: 2.5rem; }
+        .gallery-btn {
+            display: inline-flex; align-items: center; gap: 0.5rem; font-size: 1.1rem;
+            padding: 1rem 2rem; border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50px; transition: var(--transition); color: var(--text-primary);
+        }
+        .gallery-btn:hover { border-color: var(--accent); background: rgba(124, 58, 237, 0.1); }
+
+        /* About & Footer (Standardized) */
+        .about-section { padding: 8rem 4rem; background: var(--bg-primary); }
+        .browser-window {
+            max-width: 1000px; margin: 0 auto; background: var(--bg-secondary);
+            border-radius: 12px; overflow: hidden; box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+        .window-header { display: flex; align-items: center; padding: 1rem 1.5rem; background: rgba(255, 255, 255, 0.05); }
+        .dots { display: flex; gap: 0.5rem; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; }
+        .red { background: #ff5f57; } .yellow { background: #ffbd2e; } .green { background: #28ca42; }
+        .window-body { padding: 3rem; }
+        
+        .bio-grid { display: grid; grid-template-columns: 1fr 2fr; gap: 4rem; align-items: center; }
+        .bio-img img { border-radius: 8px; width: 100%; }
+        .bio-text h3 { font-size: 2.5rem; margin-bottom: 1.5rem; }
+        .bio-text p { color: var(--text-secondary); margin-bottom: 1.5rem; line-height: 1.7; }
+        .bio-text strong { color: var(--accent); }
+
+        .footer { padding: 8rem 4rem 4rem; text-align: center; background: var(--bg-secondary); }
+        .footer h2 { font-size: 4rem; margin: 2rem 0; }
+        .email-link { font-size: 1.5rem; color: var(--accent); display: inline-block; margin-bottom: 4rem; }
+        .footer-bottom { display: flex; justify-content: space-between; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); color: var(--text-secondary); }
+        .socials { display: flex; gap: 2rem; }
+        .socials a:hover { color: var(--accent); }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .header, .hero, .work-section, .footer { padding-left: 2rem; padding-right: 2rem; }
+            .bio-grid { grid-template-columns: 1fr; }
+            .project-img-wrapper { display: none; } /* Disable hover effect on touch */
+            .project-item { cursor: auto; }
+        }
+        @media (max-width: 768px) {
+            .nav { display: none; }
+            .hero-title { font-size: 3.5rem; }
+            .project-info h3 { font-size: 2rem; }
+            .footer h2 { font-size: 2.5rem; }
+            .footer-bottom { flex-direction: column; gap: 1rem; }
+        }
+    </style>
 </head>
 <body>
 
-    <!-- ============================================
-         PART 1: THE PRELOADER (Splash Screen)
-         ============================================ -->
     <div class="preloader">
         <div class="counter">0</div>
-        <div class="preloader-text">INITIALIZING PORTFOLIO</div>
+        <div class="preloader-text">INITIALIZING</div>
     </div>
 
-    <!-- ============================================
-         PART 2: SMOOTH SCROLL WRAPPER
-         ============================================ -->
-    <div id="main-content">
-        
-        <!-- HEADER / NAVIGATION -->
-        <header class="header">
-            <div class="logo">Brilu.</div>
-            <nav class="nav">
-                <!-- Smooth Scroll Anchor Links -->
-                <a href="#skills">Skills</a>
-                <a href="#work">Work</a>
-                <!-- Link to separate Gallery Page -->
-                <a href="gallery.html">Gallery</a> 
-                <a href="#about">About</a>
-                <a href="#contact" class="btn-contact">Let's Talk</a>
-            </nav>
-        </header>
+    <header class="header">
+        <div class="logo">Brilu.</div>
+        <nav class="nav">
+            <a href="#skills">Skills</a>
+            <a href="#work">Work</a>
+            <a href="gallery.html">Gallery</a>
+            <a href="#about">About</a>
+            <a href="#contact" class="btn-contact">Let's Talk</a>
+        </nav>
+    </header>
 
-        <main>
-            <!-- HERO SECTION -->
-            <section class="hero">
-                <div class="hero-text-container">
-                    <h1 class="hero-title">
-                        <div class="line"><span>Creative</span></div>
-                        <div class="line"><span>Design</span></div>
-                        <div class="line"><span>Engineer</span></div>
-                    </h1>
-                    <p class="hero-sub">I build digital products that function flawlessly and look immaculate.</p>
-                </div>
-            </section>
+    <main>
+        <section class="hero">
+            <div class="hero-text-container">
+                <h1 class="hero-title">
+                    <div class="line"><span>Creative</span></div>
+                    <div class="line"><span>Design</span></div>
+                    <div class="line"><span>Engineer</span></div>
+                </h1>
+                <p class="hero-sub">I build digital products that function flawlessly and look immaculate.</p>
+            </div>
+        </section>
 
-            <!-- SKILLS MARQUEE (New "Award Winning" way to show skills) -->
-            <section class="skills-marquee" id="skills">
-                <div class="marquee-track">
-                    <!-- Duplicated list for infinite scroll effect -->
-                    <span>REACT NATIVE • VUE.JS • .NET CORE • GSAP • TYPESCRIPT • FIGMA • UI/UX • PYTHON • SQL SERVER • REACT NATIVE • VUE.JS • .NET CORE • GSAP •</span>
-                </div>
-            </section>
+        <section class="skills-marquee" id="skills">
+            <div class="marquee-track">
+                <span>REACT NATIVE • VUE.JS • .NET CORE • GSAP • TYPESCRIPT • FIGMA • UI/UX • PYTHON • SQL SERVER • REACT NATIVE • VUE.JS • .NET CORE • GSAP •</span>
+                <span>REACT NATIVE • VUE.JS • .NET CORE • GSAP • TYPESCRIPT • FIGMA • UI/UX • PYTHON • SQL SERVER • REACT NATIVE • VUE.JS • .NET CORE • GSAP •</span>
+            </div>
+        </section>
 
-            <!-- WORK SECTION (Project Links) -->
-            <section class="work-section" id="work">
-                <div class="section-header">
-                    <p>SELECTED WORKS</p>
-                    <h2>(2023 — 2024)</h2>
-                </div>
+        <section class="work-section" id="work">
+            <div class="section-header">
+                <p>SELECTED WORKS</p>
+                <h2>(2023 — 2024)</h2>
+            </div>
 
-                <!-- Project 1: Cloud & Code -->
-                <div class="project-item">
-                    <!-- Links to separate project page -->
-                    <a href="project-cloud.html" class="project-link"> 
-                        <div class="project-info">
-                            <h3>Cloud & Code</h3>
-                            <p>Vue.js / .NET Core / SQL</p>
-                        </div>
-                        <!-- Hover Image Reveal -->
-                        <div class="project-img-wrapper">
-                            <img src="./images/CC.svg" alt="Cloud and Code Dashboard">
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Project 2: Dulce -->
-                <div class="project-item">
-                    <a href="project-dulce.html" class="project-link">
-                        <div class="project-info">
-                            <h3>Dulce Wellness</h3>
-                            <p>React Native / Expo / Firebase</p>
-                        </div>
-                        <div class="project-img-wrapper">
-                            <img src="./images/Dulce.png" alt="Dulce App Interface">
-                        </div>
-                    </a>
-                </div>
-
-                <!-- Project 3: Moove -->
-                <div class="project-item">
-                    <a href="project-moove.html" class="project-link">
-                        <div class="project-info">
-                            <h3>Moove AI</h3>
-                            <p>AI Integration / TypeScript / Groq API</p>
-                        </div>
-                        <div class="project-img-wrapper">
-                            <img src="./images/moove1.svg" alt="Moove App Interface">
-                        </div>
-                    </a>
-                </div>
-            </section>
-
-            <!-- DESIGN / GALLERY TEASER -->
-            <section class="design-teaser">
-                <div class="design-content-center">
-                    <h2>Visual Playground</h2>
-                    <p>Poster Design, Art Direction & Experiments</p>
-                    <a href="gallery.html" class="gallery-btn">View Full Gallery <span class="arrow">→</span></a>
-                </div>
-            </section>
-
-            <!-- ABOUT SECTION (Browser Window Style) -->
-            <section class="about-section" id="about">
-                <div class="browser-window">
-                    <div class="window-header">
-                        <div class="dots">
-                            <span class="dot red"></span>
-                            <span class="dot yellow"></span>
-                            <span class="dot green"></span>
-                        </div>
-                        <div class="address-bar">about-brilu.com</div>
+            <!-- Project 1 -->
+            <div class="project-item">
+                <a href="project-cloud.html" class="project-link">
+                    <div class="project-info">
+                        <h3>Cloud & Code</h3>
+                        <p>Vue.js / .NET Core / SQL</p>
                     </div>
-                    <div class="window-body">
-                        <div class="bio-grid">
-                            <div class="bio-img">
-                                <img src="./images/bri2.png" alt="Brilu Hlongwane">
-                            </div>
-                            <div class="bio-text">
-                                <h3>Hey, I'm Brilu.</h3>
-                                <p>
-                                    I'm a passionate creative bridging the gap between design and development. 
-                                    I can do more than most when it comes to creating an interface that is both 
-                                    pleasing to the eye and provides a great user experience.
-                                </p>
-                                <p>
-                                    Whether it's the logic of <strong>.NET Core</strong> or the creativity of 
-                                    <strong>Figma</strong>, I thrive on building complete solutions.
-                                </p>
-                                <a href="#" class="resume-btn">Download Resume</a>
-                            </div>
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=1000&q=80" alt="Work">
+                    </div>
+                </a>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-item">
+                <a href="project-dulce.html" class="project-link">
+                    <div class="project-info">
+                        <h3>Dulce Wellness</h3>
+                        <p>React Native / Expo / Firebase</p>
+                    </div>
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&w=1000&q=80" alt="Work">
+                    </div>
+                </a>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-item">
+                <a href="project-moove.html" class="project-link">
+                    <div class="project-info">
+                        <h3>Moove AI</h3>
+                        <p>AI Integration / TypeScript</p>
+                    </div>
+                    <div class="project-img-wrapper">
+                        <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?auto=format&fit=crop&w=1000&q=80" alt="Work">
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <section class="design-teaser">
+            <div class="design-content-center">
+                <h2>Visual Playground</h2>
+                <p>Poster Design, Art Direction & Experiments</p>
+                <a href="gallery.html" class="gallery-btn">View Full Gallery <span class="arrow">→</span></a>
+            </div>
+        </section>
+
+        <section class="about-section" id="about">
+            <div class="browser-window">
+                <div class="window-header">
+                    <div class="dots"><span class="dot red"></span><span class="dot yellow"></span><span class="dot green"></span></div>
+                </div>
+                <div class="window-body">
+                    <div class="bio-grid">
+                        <div class="bio-img">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1000&q=80" alt="Brilu">
+                        </div>
+                        <div class="bio-text">
+                            <h3>Hey, I'm Brilu.</h3>
+                            <p>I'm a passionate creative bridging the gap between design and development. I can do more than most when it comes to creating an interface that is both pleasing to the eye and provides a great user experience.</p>
+                            <p>Whether it's the logic of <strong>.NET Core</strong> or the creativity of <strong>Figma</strong>, I thrive on building complete solutions.</p>
+                            <a href="#" class="gallery-btn">Download Resume</a>
                         </div>
                     </div>
                 </div>
-            </section>
+            </div>
+        </section>
 
-            <!-- FOOTER / CONTACT -->
-            <footer class="footer" id="contact">
-                <p class="footer-label">GOT AN IDEA?</p>
-                <h2>Let's create magic.</h2>
-                <a href="mailto:zech01hlongwane@gmail.com" class="email-link">zech01hlongwane@gmail.com</a>
-                
-                <div class="footer-bottom">
-                    <p>© 2024 Brilu Hlongwane</p>
-                    <div class="socials">
-                        <a href="https://www.linkedin.com/in/brilu-hlongwane-623b54208" target="_blank">LinkedIn</a>
-                        <a href="https://github.com/Brilu-22" target="_blank">GitHub</a>
-                        <a href="https://codepen.io/brilu" target="_blank">CodePen</a>
-                    </div>
+        <footer class="footer" id="contact">
+            <p class="footer-label">GOT AN IDEA?</p>
+            <h2>Let's create magic.</h2>
+            <a href="mailto:zech01hlongwane@gmail.com" class="email-link">zech01hlongwane@gmail.com</a>
+            <div class="footer-bottom">
+                <p>© 2024 Brilu Hlongwane</p>
+                <div class="socials">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">GitHub</a>
+                    <a href="#">CodePen</a>
                 </div>
-            </footer>
+            </div>
+        </footer>
+    </main>
 
-        </main>
-    </div>
-
-    <!-- ============================================
-         PART 3: SCRIPTS (Optimized Installation)
-         ============================================ -->
-         
-    <!-- 1. GSAP Core -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/gsap.min.js"></script>
-
-    <!-- 2. ScrollTrigger -->
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.13.0/dist/ScrollTrigger.min.js"></script>
-
-    <!-- 3. Lenis (Smooth Scroll) -->
-    <script src="https://unpkg.com/@studio-freight/lenis@1.0.29/dist/lenis.min.js"></script>
-
-    <!-- 4. Initialization Script -->
     <script>
-        document.addEventListener("DOMContentLoaded", (event) => {
-            // Register GSAP Plugin
+        document.addEventListener("DOMContentLoaded", function() {
             gsap.registerPlugin(ScrollTrigger);
-            
-            // Initialize Lenis Smooth Scroll
+
+            // 1. SETUP SMOOTH SCROLL (LENIS)
+            // Increased duration for a "heavier" premium feel
             const lenis = new Lenis({
-                duration: 1.2,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+                duration: 1.5, 
+                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Exponential
+                smooth: true,
+                mouseMultiplier: 1, // Normalized speed
             });
 
-            function raf(time) {
-                lenis.raf(time);
-                ScrollTrigger.update(); // Sync GSAP with Lenis
-                requestAnimationFrame(raf);
+            lenis.on('scroll', ScrollTrigger.update);
+            gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+            gsap.ticker.lagSmoothing(0);
+
+            // 2. PRELOADER
+            function startLoader() {
+                let counterElement = document.querySelector(".counter");
+                let currentValue = 0;
+
+                function updateCounter() {
+                    if (currentValue >= 100) {
+                        finishLoader();
+                        return;
+                    }
+                    currentValue += Math.floor(Math.random() * 10) + 1;
+                    if (currentValue > 100) currentValue = 100;
+                    counterElement.textContent = currentValue;
+                    
+                    let delay = Math.floor(Math.random() * 50) + 20; // Faster count
+                    setTimeout(updateCounter, delay);
+                }
+                updateCounter();
             }
-            requestAnimationFrame(raf);
+
+            function finishLoader() {
+                const tl = gsap.timeline();
+                
+                tl.to(".counter", { y: -50, opacity: 0, duration: 0.5, ease: "power2.in" })
+                  .to(".preloader", { 
+                      height: 0, 
+                      duration: 1, 
+                      ease: "expo.inOut" 
+                  })
+                  .from(".hero-title .line span", {
+                      yPercent: 120,
+                      duration: 1.2,
+                      stagger: 0.1,
+                      ease: "power4.out" // "Slingshot" ease
+                  }, "-=0.5")
+                  .to(".hero-sub", {
+                      opacity: 1,
+                      y: 0,
+                      duration: 1
+                  }, "-=0.8");
+            }
+
+            startLoader();
+
+            // 3. MARQUEE ANIMATION (GSAP for better control)
+            gsap.to(".marquee-track", {
+                xPercent: -50,
+                repeat: -1,
+                ease: "none",
+                duration: 20
+            });
+
+            // 4. WORK HOVER EFFECT (Performance Optimized)
+            // We use quickTo for high performance mouse following (no lag)
+            const projects = document.querySelectorAll('.project-item');
+
+            projects.forEach((project) => {
+                const wrapper = project.querySelector('.project-img-wrapper');
+                // Create quickSetters for X and Y
+                const xTo = gsap.quickTo(wrapper, "x", {duration: 0.4, ease: "power3"});
+                const yTo = gsap.quickTo(wrapper, "y", {duration: 0.4, ease: "power3"});
+
+                project.addEventListener("mouseenter", () => {
+                    gsap.to(wrapper, {opacity: 1, scale: 1, duration: 0.4, ease: "power2.out"});
+                });
+
+                project.addEventListener("mouseleave", () => {
+                    gsap.to(wrapper, {opacity: 0, scale: 0.8, duration: 0.4, ease: "power2.in"});
+                });
+
+                project.addEventListener("mousemove", (e) => {
+                    // Update GSAP quickTo values with mouse coordinates
+                    xTo(e.clientX);
+                    yTo(e.clientY);
+                });
+            });
+
+            // 5. SCROLL ANIMATIONS (Reveal Elements)
+            const fadeElements = gsap.utils.toArray(".project-item, .design-teaser, .footer h2");
+            
+            fadeElements.forEach(el => {
+                gsap.from(el, {
+                    scrollTrigger: {
+                        trigger: el,
+                        start: "top 85%",
+                    },
+                    y: 50,
+                    opacity: 0,
+                    duration: 1.2,
+                    ease: "power3.out"
+                });
+            });
+
+            // Scale browser window on scroll
+            gsap.from(".browser-window", {
+                scrollTrigger: {
+                    trigger: ".about-section",
+                    start: "top 90%",
+                    end: "top 30%",
+                    scrub: 1
+                },
+                scale: 0.9,
+                opacity: 0
+            });
         });
     </script>
-    
-    <!-- 5. Your Main Animation Logic -->
-    <script src="main.js"></script>
-
 </body>
 </html>
