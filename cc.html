@@ -6,13 +6,39 @@
     <title>Cloud & Code | Brilu Hlongwane</title>
     <!-- Fonts -->
     <link href="https://api.fontshare.com/v2/css?f[]=clash-display@400,500,600,700&f[]=general-sans@400,500,600&display=swap" rel="stylesheet">
-    <!-- Main CSS -->
-    <link rel="stylesheet" href="main.css">
     
     <style>
-        /* --- PROJECT SPECIFIC INLINE STYLES --- 
-           (You can move these to style.css if you prefer) */
-        
+        /* CSS Variables */
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #a0a0a0;
+            --accent: #7c3aed;
+            --accent-light: #8b5cf6;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Reset and Base Styles */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'General Sans', sans-serif; background: var(--bg-primary); color: var(--text-primary); line-height: 1.6; }
+        h1, h2, h3, h4, h5, h6 { font-family: 'Clash Display', sans-serif; font-weight: 600; line-height: 1.2; }
+        a { color: inherit; text-decoration: none; transition: var(--transition); }
+        img { max-width: 100%; height: auto; display: block; }
+
+        /* Header */
+        .header {
+            position: fixed; top: 0; left: 0; width: 100%; padding: 2rem 4rem;
+            display: flex; justify-content: space-between; align-items: center; z-index: 500;
+            background: rgba(10, 10, 10, 0.8); backdrop-filter: blur(10px);
+        }
+        .logo { font-family: 'Clash Display', sans-serif; font-size: 1.8rem; font-weight: 700; }
+        .nav { display: flex; gap: 2.5rem; align-items: center; }
+        .nav a { font-size: 0.95rem; position: relative; }
+        .nav a:after { content: ''; position: absolute; bottom: -5px; left: 0; width: 0; height: 1px; background: var(--text-primary); transition: var(--transition); }
+        .nav a:hover:after { width: 100%; }
+
+        /* Project Hero */
         .project-hero {
             padding-top: 20vh;
             padding-bottom: 10vh;
@@ -21,20 +47,21 @@
         }
 
         .ph-title {
-            font-family: var(--font-heading);
+            font-family: 'Clash Display', sans-serif;
             font-size: 10vw;
             line-height: 0.9;
             text-transform: uppercase;
             margin-bottom: 4rem;
         }
 
-        /* The Grid for Project Details */
+        /* Updated Project Meta Grid with GitHub */
         .project-meta-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(5, 1fr);
             border-top: 1px solid #ccc;
             padding-top: 2rem;
             margin-bottom: 5rem;
+            gap: 1rem;
         }
 
         .meta-col h4 {
@@ -49,6 +76,21 @@
             font-weight: 500;
         }
 
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 6px;
+            transition: var(--transition);
+        }
+
+        .github-link:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
         /* Large Parallax Image */
         .hero-image-container {
             width: 100%;
@@ -59,20 +101,20 @@
 
         .hero-image-container img {
             width: 100%;
-            height: 110%; /* Taller for parallax effect */
+            height: 110%;
             object-fit: cover;
             object-position: center;
         }
 
         /* Case Study Content */
         .case-study-content {
-            padding: 10rem 20%; /* Narrower column for reading */
+            padding: 10rem 20%;
             font-size: 1.5rem;
             line-height: 1.6;
         }
 
         .case-study-content h2 {
-            font-family: var(--font-heading);
+            font-family: 'Clash Display', sans-serif;
             font-size: 3rem;
             margin-bottom: 2rem;
             margin-top: 4rem;
@@ -83,6 +125,59 @@
             margin: 5rem auto;
             display: block;
             border-radius: 8px;
+        }
+
+        /* Tech Stack Section */
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tech-tag {
+            background: var(--accent);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* Project Links Section */
+        .project-links {
+            display: flex;
+            gap: 2rem;
+            margin: 3rem 0;
+            flex-wrap: wrap;
+        }
+
+        .project-link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: var(--accent);
+            color: white;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .project-link-btn:hover {
+            background: var(--accent-light);
+            transform: translateY(-2px);
+        }
+
+        .project-link-btn.secondary {
+            background: transparent;
+            border: 1px solid var(--text-secondary);
+            color: var(--text-primary);
+        }
+
+        .project-link-btn.secondary:hover {
+            border-color: var(--accent);
+            background: rgba(124, 58, 237, 0.1);
         }
 
         /* Next Project Navigation */
@@ -104,7 +199,7 @@
         }
 
         .next-title {
-            font-family: var(--font-heading);
+            font-family: 'Clash Display', sans-serif;
             font-size: 8vw;
             text-transform: uppercase;
             line-height: 1;
@@ -116,9 +211,88 @@
             color: #ccc;
         }
 
+        /* Footer */
+        .footer {
+            padding: 8rem 4rem 4rem;
+            text-align: center;
+            background: var(--bg-secondary);
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            padding-top: 2rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: var(--text-secondary);
+        }
+
+        .socials {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .socials a:hover {
+            color: var(--accent);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .case-study-content {
+                padding: 8rem 10%;
+            }
+            
+            .project-meta-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
         @media (max-width: 768px) {
-            .project-meta-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
-            .case-study-content { padding: 5rem 5%; }
+            .header {
+                padding: 1.5rem 2rem;
+            }
+            
+            .project-hero {
+                padding: 15vh 2rem 5vh;
+            }
+            
+            .project-meta-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 2rem;
+            }
+            
+            .case-study-content {
+                padding: 5rem 2rem;
+                font-size: 1.2rem;
+            }
+            
+            .case-study-content h2 {
+                font-size: 2rem;
+            }
+            
+            .project-links {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .footer {
+                padding: 4rem 2rem 2rem;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .project-meta-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .nav {
+                gap: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -127,7 +301,7 @@
     <!-- Smooth Scroll Wrapper -->
     <div id="main-content">
         
-        <!-- Navigation (Simplified for Project Page) -->
+        <!-- Navigation -->
         <header class="header">
             <div class="logo"><a href="index.html" style="color:inherit; text-decoration:none;">Brilu.</a></div>
             <nav class="nav">
@@ -147,7 +321,7 @@
                     </div>
                     <div class="meta-col">
                         <h4>Year</h4>
-                        <p>2025</p>
+                        <p>2024</p>
                     </div>
                     <div class="meta-col">
                         <h4>Stack</h4>
@@ -157,12 +331,20 @@
                         <h4>Live</h4>
                         <p><a href="#" target="_blank" style="color:inherit;">Visit Site ↗</a></p>
                     </div>
+                    <div class="meta-col">
+                        <h4>Code</h4>
+                        <p>
+                            <a href="https://github.com/Mwape-Kurete/CC-School-Frontend.git" target="_blank">GitHub</a>" target="_blank" class="github-link">
+                                GitHub ↗
+                            </a>
+                        </p>
+                    </div>
                 </div>
             </section>
 
             <!-- 2. Parallax Banner Image -->
             <div class="hero-image-container">
-                <img src="./images/CC.svg" alt="Project Banner" class="parallax-img">
+                <img src="./images/CC.svg" alt="Cloud & Code Academy Dashboard" class="parallax-img">
             </div>
 
             <!-- 3. The Case Study Story -->
@@ -179,9 +361,35 @@
                     Administrators, Teachers, and Students. The system needed to handle real-time data synchronization 
                     for class schedules while maintaining a secure, FERPA-compliant database structure.
                 </p>
+
+                <h2>Technical Implementation</h2>
+                <div class="tech-stack">
+                    <span class="tech-tag">Vue.js 3</span>
+                    <span class="tech-tag">.NET Core 8</span>
+                    <span class="tech-tag">Entity Framework</span>
+                    <span class="tech-tag">SQL Server</span>
+                    <span class="tech-tag">Pinia</span>
+                    <span class="tech-tag">TypeScript</span>
+                    <span class="tech-tag">Tailwind CSS</span>
+                    <span class="tech-tag">Azure</span>
+                </div>
+
+                <!-- Project Links -->
+                <div class="project-links">
+                    <a href="https://github.com/Brilu-22/cloud-code-academy" target="_blank" class="project-link-btn">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                        </svg>
+                        View Source Code
+                    </a>
+                    
+                    <a href="#" target="_blank" class="project-link-btn secondary">
+                        Live Demo ↗
+                    </a>
+                </div>
             </section>
 
-            <!-- 4. Visual Break (Mockup Grid) -->
+            <!-- 4. Visual Break -->
             <img src="./images/CC.svg" alt="Dashboard View" class="content-image-full reveal-img">
             
             <section class="case-study-content">
@@ -192,6 +400,15 @@
                     constant page reloads. The interface adheres to a strict "clean-slate" design philosophy, ensuring that 
                     complex data tables remain readable and actionable.
                 </p>
+
+                <h2>Key Features</h2>
+                <ul style="list-style: none; padding-left: 0; font-size: 1.2rem; line-height: 1.8;">
+                    <li style="margin-bottom: 1rem;">• Real-time student enrollment and class scheduling</li>
+                    <li style="margin-bottom: 1rem;">• Automated grade calculation and reporting</li>
+                    <li style="margin-bottom: 1rem;">• Multi-role access control (Admin/Teacher/Student)</li>
+                    <li style="margin-bottom: 1rem;">• Responsive design for all device types</li>
+                    <li style="margin-bottom: 1rem;">• Secure data encryption and backup systems</li>
+                </ul>
             </section>
 
             <!-- 5. Next Project Footer -->
@@ -203,10 +420,11 @@
             <!-- Standard Footer -->
             <footer class="footer">
                 <div class="footer-bottom">
-                    <p>© 2024 Brilu Hlongwane</p>
+                    <p>© 2025 Brilu Hlongwane</p>
                     <div class="socials">
-                        <a href="#">LinkedIn</a>
-                        <a href="#">GitHub</a>
+                        <a href="https://www.linkedin.com/in/brilu-hlongwane-623b54208" target="_blank">LinkedIn</a>
+                        <a href="https://github.com/Mwape-Kurete/CC-School-Frontend.git" target="_blank">GitHub</a>
+                        <a href="https://codepen.io/brilu" target="_blank">CodePen</a>
                     </div>
                 </div>
             </footer>
@@ -253,12 +471,12 @@
 
         // Parallax Image Effect
         gsap.to(".parallax-img", {
-            yPercent: 20, // Moves the image slightly down as you scroll up
+            yPercent: 20,
             ease: "none",
             scrollTrigger: {
                 trigger: ".hero-image-container",
-                start: "top bottom", // Start when container hits bottom of screen
-                end: "bottom top",   // End when container leaves top of screen
+                start: "top bottom",
+                end: "bottom top",
                 scrub: true
             }
         });
@@ -269,7 +487,7 @@
             gsap.from(text, {
                 scrollTrigger: {
                     trigger: text,
-                    start: "top 85%", // Trigger when top of text hits 85% of viewport height
+                    start: "top 85%",
                 },
                 y: 50,
                 opacity: 0,
@@ -288,6 +506,32 @@
             opacity: 0,
             duration: 1.2,
             ease: "power2.out"
+        });
+
+        // Tech Stack Animation
+        gsap.from(".tech-tag", {
+            scrollTrigger: {
+                trigger: ".tech-stack",
+                start: "top 80%",
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.1,
+            ease: "power3.out"
+        });
+
+        // Project Links Animation
+        gsap.from(".project-link-btn", {
+            scrollTrigger: {
+                trigger: ".project-links",
+                start: "top 80%",
+            },
+            y: 30,
+            opacity: 0,
+            duration: 0.8,
+            stagger: 0.2,
+            ease: "power3.out"
         });
 
     </script>
